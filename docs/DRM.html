@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Dose Response Model | 직업환경보건 연구방법론</title>
+  <meta name="description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Dose Response Model | 직업환경보건 연구방법론" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Dose Response Model | 직업환경보건 연구방법론" />
+  
+  <meta name="twitter:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+<meta name="author" content="윤진하" />
+
+
+<meta name="date" content="2021-12-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="claim-rate-proportional-rate.html"/>
+<link rel="next" href="nested-case-control-study.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 소개</a></li>
+<li class="chapter" data-level="2" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html"><i class="fa fa-check"></i><b>2</b> 직업병 연구방법론 개론</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html#보건학-우선순위"><i class="fa fa-check"></i><b>2.1</b> 보건학 우선순위</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html"><i class="fa fa-check"></i><b>3</b> Claim Rate &amp; Proportional Rate</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim"><i class="fa fa-check"></i><b>3.1</b> 승인률</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-표준화"><i class="fa fa-check"></i><b>3.1.1</b> 데이터 표준화</a></li>
+<li class="chapter" data-level="3.1.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최근-5년-산재-신청-건수-및-승인률"><i class="fa fa-check"></i><b>3.1.2</b> 최근 5년 산재 신청 건수 및 승인률</a></li>
+<li class="chapter" data-level="3.1.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암-승인률"><i class="fa fa-check"></i><b>3.1.3</b> 암 승인률</a></li>
+<li class="chapter" data-level="3.1.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암종별-승인률"><i class="fa fa-check"></i><b>3.1.4</b> 암종별 승인률</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim2"><i class="fa fa-check"></i><b>3.2</b> 신청률</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-불러오기"><i class="fa fa-check"></i><b>3.2.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="3.2.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-표준화"><i class="fa fa-check"></i><b>3.2.2</b> 질병 표준화</a></li>
+<li class="chapter" data-level="3.2.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-표준화"><i class="fa fa-check"></i><b>3.2.3</b> 업종 표준화</a></li>
+<li class="chapter" data-level="3.2.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병업종-점수화-10점-만점"><i class="fa fa-check"></i><b>3.2.4</b> 질병/업종 점수화 (10점 만점)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비-claim-rate-ratio"><i class="fa fa-check"></i><b>3.2.5</b> 신청률비 (claim rate ratio)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비-proportional-claim-ratio"><i class="fa fa-check"></i><b>3.2.6</b> 비례신청비 (Proportional claim ratio)</a></li>
+<li class="chapter" data-level="3.2.7" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#통합-데이터-산출"><i class="fa fa-check"></i><b>3.2.7</b> 통합 데이터 산출</a></li>
+<li class="chapter" data-level="3.2.8" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-저장"><i class="fa fa-check"></i><b>3.2.8</b> 데이터 저장</a></li>
+<li class="chapter" data-level="3.2.9" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-점수"><i class="fa fa-check"></i><b>3.2.9</b> 업종 점수</a></li>
+<li class="chapter" data-level="3.2.10" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-점수"><i class="fa fa-check"></i><b>3.2.10</b> 질병 점수</a></li>
+<li class="chapter" data-level="3.2.11" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-x-질병-조합-점수"><i class="fa fa-check"></i><b>3.2.11</b> 업종 X 질병 조합 점수</a></li>
+<li class="chapter" data-level="3.2.12" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비"><i class="fa fa-check"></i><b>3.2.12</b> 신청률비</a></li>
+<li class="chapter" data-level="3.2.13" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비"><i class="fa fa-check"></i><b>3.2.13</b> 비례신청비</a></li>
+<li class="chapter" data-level="3.2.14" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-점수"><i class="fa fa-check"></i><b>3.2.14</b> 최종 점수</a></li>
+<li class="chapter" data-level="3.2.15" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선순위-집단"><i class="fa fa-check"></i><b>3.2.15</b> 우선순위 집단</a></li>
+<li class="chapter" data-level="3.2.16" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선-순위-집단별-관찰"><i class="fa fa-check"></i><b>3.2.16</b> 우선 순위 집단별 관찰</a></li>
+<li class="chapter" data-level="3.2.17" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질적-우선순위-고려"><i class="fa fa-check"></i><b>3.2.17</b> 질적 우선순위 고려</a></li>
+<li class="chapter" data-level="3.2.18" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병군-제외"><i class="fa fa-check"></i><b>3.2.18</b> 질병군 제외</a></li>
+<li class="chapter" data-level="3.2.19" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-우선-순위-점수"><i class="fa fa-check"></i><b>3.2.19</b> 최종 우선 순위 점수</a></li>
+<li class="chapter" data-level="3.2.20" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-대분류별-우선순위"><i class="fa fa-check"></i><b>3.2.20</b> 업종 대분류별 우선순위</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="DRM.html"><a href="DRM.html"><i class="fa fa-check"></i><b>4</b> Dose Response Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="DRM.html"><a href="DRM.html#exposure-dose-and-health"><i class="fa fa-check"></i><b>4.1</b> Exposure (Dose) and Health</a></li>
+<li class="chapter" data-level="4.2" data-path="DRM.html"><a href="DRM.html#실습-1-질병-그림-그리기"><i class="fa fa-check"></i><b>4.2</b> 실습 1: 질병 그림 그리기</a></li>
+<li class="chapter" data-level="4.3" data-path="DRM.html"><a href="DRM.html#지역사회-연구-community-base-cohort-study"><i class="fa fa-check"></i><b>4.3</b> 지역사회 연구 (community base cohort study)</a></li>
+<li class="chapter" data-level="4.4" data-path="DRM.html"><a href="DRM.html#모형-차이-sigmoid-curve-vs-linear-regression"><i class="fa fa-check"></i><b>4.4</b> 모형 차이: sigmoid curve vs linear regression</a></li>
+<li class="chapter" data-level="4.5" data-path="DRM.html"><a href="DRM.html#코호트-특성에-따른-상황"><i class="fa fa-check"></i><b>4.5</b> 코호트 특성에 따른 상황</a></li>
+<li class="chapter" data-level="4.6" data-path="DRM.html"><a href="DRM.html#코호트-특성에-따른-상황과-이론적-모델"><i class="fa fa-check"></i><b>4.6</b> 코호트 특성에 따른 상황과 이론적 모델</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="DRM.html"><a href="DRM.html#take-home-message"><i class="fa fa-check"></i><b>4.6.1</b> Take home message</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="DRM.html"><a href="DRM.html#threshold-찾기-change-point-찾기"><i class="fa fa-check"></i><b>4.7</b> Threshold 찾기 (change point 찾기)</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="DRM.html"><a href="DRM.html#자료-생성"><i class="fa fa-check"></i><b>4.7.1</b> 자료 생성</a></li>
+<li class="chapter" data-level="4.7.2" data-path="DRM.html"><a href="DRM.html#가상의-threshold-값-수행해보기"><i class="fa fa-check"></i><b>4.7.2</b> 가상의 threshold 값 수행해보기</a></li>
+<li class="chapter" data-level="4.7.3" data-path="DRM.html"><a href="DRM.html#과제"><i class="fa fa-check"></i><b>4.7.3</b> 과제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html"><i class="fa fa-check"></i><b>5</b> Nested Case Control Study</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#simple-tutor-for-nested-case-control-ncc-study"><i class="fa fa-check"></i><b>5.1</b> simple tutor for nested case control (NCC) study</a></li>
+<li class="chapter" data-level="5.2" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#sampling-schemes-for-nested-case-control-studies"><i class="fa fa-check"></i><b>5.2</b> Sampling schemes for nested case-control studies</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tsregression.html"><a href="tsregression.html"><i class="fa fa-check"></i><b>6</b> Time series data analysis, regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tsregression.html"><a href="tsregression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="tsregression.html"><a href="tsregression.html#a-case-study-in-air-pollution-and-health"><i class="fa fa-check"></i><b>6.2</b> A case study in Air Pollution and Health</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tsregression.html"><a href="tsregression.html#starting-up"><i class="fa fa-check"></i><b>6.2.1</b> Starting Up</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tsregression.html"><a href="tsregression.html#statistical-issues-in-estimating-the-health-effects-of-spatialtemporal-environmental-exposures"><i class="fa fa-check"></i><b>6.2.2</b> Statistical Issues in Estimating the Health Effects of Spatial–Temporal Environmental Exposures</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tsregression.html"><a href="tsregression.html#simulation-study-for-pm10-and-cvd-mortality"><i class="fa fa-check"></i><b>6.3</b> simulation study for pm10 and cvd mortality</a></li>
+<li class="chapter" data-level="6.4" data-path="tsregression.html"><a href="tsregression.html#case-study-influenza-epidemic-and-suicide"><i class="fa fa-check"></i><b>6.4</b> case study: influenza epidemic and suicide</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tsregression.html"><a href="tsregression.html#실습-데이터"><i class="fa fa-check"></i><b>6.4.1</b> 실습 데이터</a></li>
+<li class="chapter" data-level="6.4.2" data-path="tsregression.html"><a href="tsregression.html#simple-time-related-variable-adjusting-regression"><i class="fa fa-check"></i><b>6.4.2</b> simple time-related variable adjusting regression</a></li>
+<li class="chapter" data-level="6.4.3" data-path="tsregression.html"><a href="tsregression.html#arima"><i class="fa fa-check"></i><b>6.4.3</b> ARIMA</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tsregression.html"><a href="tsregression.html#analysis-and-forecasting-regression"><i class="fa fa-check"></i><b>6.5</b> analysis and forecasting, regression</a></li>
+<li class="chapter" data-level="6.6" data-path="tsregression.html"><a href="tsregression.html#arima-1"><i class="fa fa-check"></i><b>6.6</b> ARIMA</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="tsregression.html"><a href="tsregression.html#arima-감기-자살-aic"><i class="fa fa-check"></i><b>6.6.1</b> arima 감기 자살 , AIC</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="tsregression.html"><a href="tsregression.html#aic-bic-in-generalize-additive-model"><i class="fa fa-check"></i><b>6.7</b> AIC BIC in generalize additive model</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="survival-data.html"><a href="survival-data.html"><i class="fa fa-check"></i><b>7</b> Survival Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="survival-data.html"><a href="survival-data.html#cox-proportional"><i class="fa fa-check"></i><b>7.1</b> Cox Proportional</a></li>
+<li class="chapter" data-level="7.2" data-path="survival-data.html"><a href="survival-data.html#non-proportional-model"><i class="fa fa-check"></i><b>7.2</b> non-proportional model</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="survival-data.html"><a href="survival-data.html#log-rank-test"><i class="fa fa-check"></i><b>7.2.1</b> log-rank test</a></li>
+<li class="chapter" data-level="7.2.2" data-path="survival-data.html"><a href="survival-data.html#python-tutor-윤동규"><i class="fa fa-check"></i><b>7.2.2</b> python tutor 윤동규</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Model</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mixed.html"><a href="mixed.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="mixed.html"><a href="mixed.html#data-step-1"><i class="fa fa-check"></i><b>8.2</b> data step 1</a></li>
+<li class="chapter" data-level="8.3" data-path="mixed.html"><a href="mixed.html#load-data-of-int-and-korea"><i class="fa fa-check"></i><b>8.3</b> load data of Int and Korea</a></li>
+<li class="chapter" data-level="8.4" data-path="mixed.html"><a href="mixed.html#data-merge"><i class="fa fa-check"></i><b>8.4</b> data merge</a></li>
+<li class="chapter" data-level="8.5" data-path="mixed.html"><a href="mixed.html#data-analysis-start"><i class="fa fa-check"></i><b>8.5</b> Data analysis start</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="mixed.html"><a href="mixed.html#job-loss-due-to-covid19-psychological-aggravation-according-to-gender"><i class="fa fa-check"></i><b>8.5.1</b> job loss due to COVID19, psychological aggravation according to Gender</a></li>
+<li class="chapter" data-level="8.5.2" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-age-group"><i class="fa fa-check"></i><b>8.5.2</b> job loss, psychological aggravation according to age group</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-education-level"><i class="fa fa-check"></i><b>8.6</b> job loss, psychological aggravation according to Education level</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="mixed.html"><a href="mixed.html#depression-status-according-job-loss-status"><i class="fa fa-check"></i><b>8.6.1</b> Depression status according job loss status</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="mixed.html"><a href="mixed.html#association"><i class="fa fa-check"></i><b>8.7</b> association</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="mixed.html"><a href="mixed.html#mixed-model"><i class="fa fa-check"></i><b>8.7.1</b> mixed model</a></li>
+<li class="chapter" data-level="8.7.2" data-path="mixed.html"><a href="mixed.html#mixed-model-with-human-develop-index-stratification"><i class="fa fa-check"></i><b>8.7.2</b> mixed model with human develop index stratification</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="iptw.html"><a href="iptw.html"><i class="fa fa-check"></i><b>9</b> IPTW</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="iptw.html"><a href="iptw.html#package-tutorial"><i class="fa fa-check"></i><b>9.1</b> package tutorial</a></li>
+<li class="chapter" data-level="9.2" data-path="iptw.html"><a href="iptw.html#case-study-of-noise-exposure-and-hypertension"><i class="fa fa-check"></i><b>9.2</b> case study of noise exposure and hypertension</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>10</b> simulation</a></li>
+<li class="chapter" data-level="11" data-path="jobstress.html"><a href="jobstress.html"><i class="fa fa-check"></i><b>11</b> job stress questionnaires</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jobstress.html"><a href="jobstress.html#설문지-개발"><i class="fa fa-check"></i><b>11.1</b> 설문지 개발</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="jobstress.html"><a href="jobstress.html#기본-r-준비"><i class="fa fa-check"></i><b>11.1.1</b> 기본 R 준비</a></li>
+<li class="chapter" data-level="11.1.2" data-path="jobstress.html"><a href="jobstress.html#basic-data-step"><i class="fa fa-check"></i><b>11.1.2</b> basic data step</a></li>
+<li class="chapter" data-level="11.1.3" data-path="jobstress.html"><a href="jobstress.html#설문지와-데이터-비교하기"><i class="fa fa-check"></i><b>11.1.3</b> 설문지와 데이터 비교하기</a></li>
+<li class="chapter" data-level="11.1.4" data-path="jobstress.html"><a href="jobstress.html#변수에-라벨링-붙이기"><i class="fa fa-check"></i><b>11.1.4</b> 변수에 라벨링 붙이기</a></li>
+<li class="chapter" data-level="11.1.5" data-path="jobstress.html"><a href="jobstress.html#결측값-제거"><i class="fa fa-check"></i><b>11.1.5</b> 결측값 제거</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="jobstress.html"><a href="jobstress.html#주성분분석"><i class="fa fa-check"></i><b>11.2</b> 주성분분석</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="jobstress.html"><a href="jobstress.html#주성분분석-간단-소개"><i class="fa fa-check"></i><b>11.2.1</b> 주성분분석 간단 소개</a></li>
+<li class="chapter" data-level="11.2.2" data-path="jobstress.html"><a href="jobstress.html#요인이-몇개면-좋을까"><i class="fa fa-check"></i><b>11.2.2</b> 요인이 몇개면 좋을까?</a></li>
+<li class="chapter" data-level="11.2.3" data-path="jobstress.html"><a href="jobstress.html#요인-고정-분석"><i class="fa fa-check"></i><b>11.2.3</b> 요인 고정 분석</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="jobstress.html"><a href="jobstress.html#요인-개수-정하기-신뢰도-측면"><i class="fa fa-check"></i><b>11.3</b> 요인 개수 정하기: 신뢰도 측면</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="jobstress.html"><a href="jobstress.html#신뢰도-값-cronbach-alpha"><i class="fa fa-check"></i><b>11.3.1</b> 신뢰도 값 (Cronbach alpha)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="jobstress.html"><a href="jobstress.html#요인값-활용하기"><i class="fa fa-check"></i><b>11.4</b> 요인값 활용하기</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="jobstress.html"><a href="jobstress.html#요인값-데이터화"><i class="fa fa-check"></i><b>11.4.1</b> 요인값 데이터화</a></li>
+<li class="chapter" data-level="11.4.2" data-path="jobstress.html"><a href="jobstress.html#우울증-점수-phq-9"><i class="fa fa-check"></i><b>11.4.2</b> 우울증 점수 (PHQ-9)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="jobstress.html"><a href="jobstress.html#요인별-사용-방법"><i class="fa fa-check"></i><b>11.4.3</b> 요인별 사용 방법</a></li>
+<li class="chapter" data-level="11.4.4" data-path="jobstress.html"><a href="jobstress.html#과제-소진-증후군과-감정노동"><i class="fa fa-check"></i><b>11.4.4</b> 과제: 소진 증후군과 감정노동</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="jobstress.html"><a href="jobstress.html#mediation"><i class="fa fa-check"></i><b>11.5</b> Indirect effect</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="smr.html"><a href="smr.html"><i class="fa fa-check"></i><b>12</b> 산업보건분야에서 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="smr.html"><a href="smr.html#빅데이터-위원회"><i class="fa fa-check"></i><b>12.1</b> 빅데이터 위원회</a></li>
+<li class="chapter" data-level="12.2" data-path="smr.html"><a href="smr.html#직업환경분야-건강보험공단-자료-분석"><i class="fa fa-check"></i><b>12.2</b> 직업환경분야 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="smr.html"><a href="smr.html#건강보험공단-자료-및-사용"><i class="fa fa-check"></i><b>12.2.1</b> 건강보험공단 자료 및 사용</a></li>
+<li class="chapter" data-level="12.2.2" data-path="smr.html"><a href="smr.html#건강보험공단-자료-분석-방법"><i class="fa fa-check"></i><b>12.2.2</b> 건강보험공단 자료 분석 방법</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html"><i class="fa fa-check"></i><b>13</b> Writing Scientific Manuscript for Occupational Health</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문을-작성하는-10가지-과정"><i class="fa fa-check"></i><b>13.1</b> 논문을 작성하는 10가지 과정</a></li>
+<li class="chapter" data-level="13.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#각-단계별-세부-목표"><i class="fa fa-check"></i><b>13.2</b> 각 단계별 세부 목표</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#연구-주제-선정"><i class="fa fa-check"></i><b>13.2.1</b> 연구 주제 선정</a></li>
+<li class="chapter" data-level="13.2.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#선행-연구-조사"><i class="fa fa-check"></i><b>13.2.2</b> 선행 연구 조사</a></li>
+<li class="chapter" data-level="13.2.3" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#가설-설정"><i class="fa fa-check"></i><b>13.2.3</b> 가설 설정</a></li>
+<li class="chapter" data-level="13.2.4" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문계획서-작성-irb-신청"><i class="fa fa-check"></i><b>13.2.4</b> 논문계획서 작성, IRB 신청</a></li>
+<li class="chapter" data-level="13.2.5" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-수집-변수-정의"><i class="fa fa-check"></i><b>13.2.5</b> 데이터 수집 (변수 정의)</a></li>
+<li class="chapter" data-level="13.2.6" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-분석"><i class="fa fa-check"></i><b>13.2.6</b> 데이터 분석</a></li>
+<li class="chapter" data-level="13.2.7" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문작성"><i class="fa fa-check"></i><b>13.2.7</b> 논문작성</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">직업환경보건 연구방법론</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="DRM" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Dose Response Model</h1>
+<div id="exposure-dose-and-health" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Exposure (Dose) and Health</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="DRM.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="DRM.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="DRM.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="DRM.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+<blockquote>
+<p>영상 다운로드</p>
+</blockquote>
+<p><a href="https://dspubs.org/download/drm1.mp4">다운</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NR_SKy1EaWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>우리몸에 필수 요소가 있다고 상상해 봅시다. 예를 들어 적혈구 백혈구를 생각해 보는 것입니다. 적혈구가 너무 적으면 빈혈과 같은 질병이 있는 것이고, 너무 많으면 적혈구 과다증이 있어 건강에 해롭습니다. <br>
+어떤 필수 요소가 너무 적거나 많은 상태를 질병으로, 적절한 양이 있는 경우 건강상태로 보는 것 입니다. 다음과 같은 상황을 상상해 보겠습니다.</p>
+<blockquote>
+<p>자료 생성</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="DRM.html#cb2-1" aria-hidden="true" tabindex="-1"></a>trace.e <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">50</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb2-2"><a href="DRM.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#normal range = 15~35</span></span>
+<span id="cb2-3"><a href="DRM.html#cb2-3" aria-hidden="true" tabindex="-1"></a>trace.e.h<span class="ot">=</span><span class="cf">function</span> (x) {</span>
+<span id="cb2-4"><a href="DRM.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(x<span class="sc">&lt;</span><span class="dv">20</span>, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">+</span><span class="dv">10</span>)),</span>
+<span id="cb2-5"><a href="DRM.html#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ifelse</span>(x<span class="sc">&lt;</span><span class="dv">30</span>, <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">19</span>)), <span class="fl">0.01</span>), </span>
+<span id="cb2-6"><a href="DRM.html#cb2-6" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">19</span>))<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="dv">40</span><span class="sc">-</span>x))</span>
+<span id="cb2-7"><a href="DRM.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb2-8"><a href="DRM.html#cb2-8" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-9"><a href="DRM.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-10"><a href="DRM.html#cb2-10" aria-hidden="true" tabindex="-1"></a>hstatus<span class="ot">&lt;-</span><span class="fu">trace.e.h</span>(trace.e)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(trace.e), <span class="dv">1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb2-11"><a href="DRM.html#cb2-11" aria-hidden="true" tabindex="-1"></a>basic <span class="ot">=</span> <span class="fu">tibble</span>(trace.e, hstatus)</span></code></pre></div>
+<blockquote>
+<p>그림 그리기</p>
+</blockquote>
+<p>이러한 관계를 그림으로 그려 보겠습니다. 기능적 측면에서 생물학적 필수 요소가 너무 적거나 너무 많으면 사망하거나 질병이 있는 상태로, 절적 수준이 유지되는 것을 정상상태로 볼 수 있습니다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="DRM.html#cb3-1" aria-hidden="true" tabindex="-1"></a>basic <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="DRM.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> trace.e, <span class="at">y =</span> hstatus)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="DRM.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;Biological Element&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="DRM.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Function&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="DRM.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb3-6"><a href="DRM.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">xmax=</span><span class="dv">7</span> , <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="DRM.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">7</span>,    <span class="at">xmax=</span><span class="dv">15</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="DRM.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">15</span>,   <span class="at">xmax=</span><span class="dv">35</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="DRM.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">35</span>,   <span class="at">xmax=</span><span class="dv">43</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="DRM.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">43</span>,   <span class="at">xmax=</span><span class="dv">52</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="DRM.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">&#39;grey50&#39;</span>) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="DRM.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">47</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="fl">1.3</span>, <span class="fl">1.3</span>), <span class="at">label=</span><span class="st">&quot;Death&quot;</span>,    <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="DRM.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">38</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.5</span>), <span class="at">label=</span><span class="st">&quot;Disease&quot;</span>,  <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="DRM.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">25</span>,       <span class="at">y=</span><span class="fl">1.7</span>,         <span class="at">label=</span><span class="st">&quot;Normal Function&quot;</span>,<span class="at">color=</span><span class="st">&quot;blue&quot;</span>) </span></code></pre></div>
+<p><img src="methods_files/figure-html/drom%20figure%201-1.png" width="672" /></p>
+<p>위의 그림을 Y축을 적혈구의 기능 측면에서 본 것으로 상상해보면 이해가 갑니다. 다음에는 적혈구의 가능을 악화시키는 물질에 노출되었다고 상상하고 기능이 아닌 질병 측면에서 볼 수 있습니다. 거꾸로 그래프를 뒤집을 수 있습니다.</p>
+</div>
+<div id="실습-1-질병-그림-그리기" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> 실습 1: 질병 그림 그리기</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="DRM.html#cb4-1" aria-hidden="true" tabindex="-1"></a>basic <span class="ot">=</span> basic <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="DRM.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>hstatus<span class="sc">+</span><span class="dv">5</span>, </span>
+<span id="cb4-3"><a href="DRM.html#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">exp.b   =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>trace.e <span class="sc">+</span><span class="dv">50</span>) </span>
+<span id="cb4-4"><a href="DRM.html#cb4-4" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">=</span> basic  <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="DRM.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> exp.b, <span class="at">y =</span> disease))<span class="sc">+</span></span>
+<span id="cb4-6"><a href="DRM.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb4-7"><a href="DRM.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;Biomarker&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="DRM.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Disease&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="DRM.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">xmax=</span><span class="dv">7</span> , <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="DRM.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">7</span>,    <span class="at">xmax=</span><span class="dv">15</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="DRM.html#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">15</span>,   <span class="at">xmax=</span><span class="dv">35</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="DRM.html#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">35</span>,   <span class="at">xmax=</span><span class="dv">43</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="DRM.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>basic[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="dv">43</span>,   <span class="at">xmax=</span><span class="dv">52</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="DRM.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="DRM.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">47</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="fl">3.7</span>, <span class="fl">3.7</span>), <span class="at">label=</span><span class="st">&quot;Death&quot;</span>,    <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="DRM.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">38</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">label=</span><span class="st">&quot;Disease&quot;</span>,  <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-17"><a href="DRM.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">25</span>,       <span class="at">y=</span><span class="fl">3.3</span>,         <span class="at">label=</span><span class="st">&quot;Normal Function&quot;</span>,<span class="at">color=</span><span class="st">&quot;blue&quot;</span>) </span>
+<span id="cb4-18"><a href="DRM.html#cb4-18" aria-hidden="true" tabindex="-1"></a>fig1</span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20disease%20plot-1.png" width="672" /></p>
+</div>
+<div id="지역사회-연구-community-base-cohort-study" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> 지역사회 연구 (community base cohort study)</h2>
+<p>지역사회 연구에서는 질병이 있는 사람 또는 기능이 약화된 사람은 병원에 입원해 있는 등 사회생활이 어려우므로 참여하지 못할 수 있습니다. 따라서 장기간 추적 관찰을 하지 않는 경우 바이오마커와 질병간에 U-shap 을 보이게 됩니다. 장기 관찰을 하거나 충분한 관찰을 하면 질병이 새로 생기는 부분을 찾을 수 있으므로 J-shap으로 보일 수 도 있습니다. 우리가 과거력이 있는 사람 또는 적절한 방법으로 건강이 악화되어 있는 사람을 제외하는 경우 바이오마커와 질병의 선형적 관계를 관찰할 수 있는 경우 입니다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="DRM.html#cb5-1" aria-hidden="true" tabindex="-1"></a>fig1 <span class="sc">+</span></span>
+<span id="cb5-2"><a href="DRM.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">43</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="fl">3.3</span>, <span class="fl">3.3</span>), <span class="at">label=</span><span class="st">&quot;Hospital (selection bias)&quot;</span>,  <span class="at">color=</span><span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="DRM.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">10</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="fl">3.8</span>), <span class="at">label=</span><span class="st">&quot;Short term follow up&quot;</span>,  <span class="at">color=</span><span class="st">&quot;purple&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="DRM.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="at">xend=</span><span class="dv">40</span>, <span class="at">y=</span><span class="fl">3.7</span>, <span class="at">yend=</span><span class="fl">3.7</span>), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb5-5"><a href="DRM.html#cb5-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="DRM.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="dv">30</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="fl">4.1</span>), <span class="at">label=</span><span class="st">&quot;Long term follow up&quot;</span>,  <span class="at">color=</span><span class="st">&quot;purple&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="DRM.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="at">xend=</span><span class="dv">50</span>, <span class="at">y=</span><span class="dv">4</span>, <span class="at">yend=</span><span class="dv">4</span>), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>,</span>
+<span id="cb5-8"><a href="DRM.html#cb5-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>))</span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20community%20cohort-1.png" width="672" /></p>
+<p>  산업보건에서는 건강한 근로자가 직장을 갖고 직장을 갖은 후에 일에 따라 물리화학적 인자에 노출이 됩니다. 만약 위의 그림에서 바이오마커가 일을하면서 노출되는 유해인자와 관련이 있다면, 사업장에서는 바이오마커가 매우 낮은 사람은 없을 것입니다. 그리고 유해인자에 노출이 많이 되어 질병이 생기고 병원에 가게된다면, 사업장을 중심으로 연구하는 경우 연구대상에 참여하지 못하게 됩니다. 즉 위의 그림에서 short-term follow up 의 상황이 발생하게 됩니다. 그런데 장기간 관찰하고 퇴사후의 자료도 이용한다면 long term follow up 과 같이 가게됩니다. 이때 상관 분석을 수행하면 short-term follow up에서는 U-shap으로, long term follow up 에서는 J-shap 으로 나타나게 됩니다. 실제 연구에서도 비슷한 상황이 발생하기도 합니다. 이때 우리가 얻은 데이터가 무엇을 목적으로 어떠한 설계로 만들어 졌는지를 관찰하고 정말 질병이 생길만한 사람을 제외한 현장에서 연구를 수행하고 있는 것은 아닌지 고민해 보아야 합니다.</p>
+</div>
+<div id="모형-차이-sigmoid-curve-vs-linear-regression" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> 모형 차이: sigmoid curve vs linear regression</h2>
+<p>  위의 그래프를 절반을 나누어서 적절한 기능을 하고 있는 사람만을 대상으로 장기간 추적관찰했다고 가정해 보겠습니다. 그러면 바이오마커와 질병의 관계를 선형으로 예측할 수도 있습니다. 노출이 지속되더라도 건강의 악화는 어느정도 포화될수 있으므로 (모두 다 계속 사망하지는 않으므로) 노출의 크기와 질병의 관계는 sigmoid curve 관계가 있을 수 있습니다.
+  어떤게 좋을까요? 정답은 없지만 LD50을 고려해서 생각해 보겠습니다. LD50이란 노출된 사람 중의 50%가 사망하는 농도를 의미합니다. 즉 LD50가 큰 물질은 적은 물질보다 많이 노출되어야 노출된 사람 중의 50%가 사망하므로 더 안전한 물질입니다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="DRM.html#cb6-1" aria-hidden="true" tabindex="-1"></a>sigmoid.f <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb6-2"><a href="DRM.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="dv">5</span><span class="sc">-</span>x))</span>
+<span id="cb6-3"><a href="DRM.html#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-4"><a href="DRM.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="DRM.html#cb6-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">tibble</span>(</span>
+<span id="cb6-6"><a href="DRM.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">dose.e =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),  </span>
+<span id="cb6-7"><a href="DRM.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">resp   =</span> <span class="fu">sigmoid.f</span>(dose.e)</span>
+<span id="cb6-8"><a href="DRM.html#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="DRM.html#cb6-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="DRM.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+dose.e
+</th>
+<th style="text-align:right;">
+resp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0179862
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.0474259
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.1192029
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.2689414
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.5000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.7310586
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0.8807971
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0.9525741
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0.9820138
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.9933071
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="DRM.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df)</span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20sigmoid%20curve-1.png" width="672" /></p>
+<p>LD50은 설명을 했고, 과도한 비교를 위해서 LD70을 보고 이야기 해보겠습니다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="DRM.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb8-2"><a href="DRM.html#cb8-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.01</span>)</span>
+<span id="cb8-3"><a href="DRM.html#cb8-3" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">sigmoid.f</span>(x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="fl">0.1</span>)</span>
+<span id="cb8-4"><a href="DRM.html#cb8-4" aria-hidden="true" tabindex="-1"></a>pb<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">0</span>, <span class="fl">0.001</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="fl">0.01</span>), <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),<span class="fu">rnorm</span>(<span class="dv">101</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.05</span>))</span>
+<span id="cb8-5"><a href="DRM.html#cb8-5" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">=</span> y <span class="sc">+</span> pb</span>
+<span id="cb8-6"><a href="DRM.html#cb8-6" aria-hidden="true" tabindex="-1"></a>ld70.sm <span class="ot">=</span> x[<span class="fu">which</span>( <span class="fu">sigmoid.f</span>(x) <span class="sc">&gt;</span><span class="fl">0.69</span> <span class="sc">&amp;</span> <span class="fu">sigmoid.f</span>(x) <span class="sc">&lt;</span> <span class="fl">0.71</span>)] <span class="sc">%&gt;%</span> <span class="fu">min</span>(.)</span>
+<span id="cb8-7"><a href="DRM.html#cb8-7" aria-hidden="true" tabindex="-1"></a>ld70.sm</span></code></pre></div>
+<pre><code>## [1] 5.81</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="DRM.html#cb10-1" aria-hidden="true" tabindex="-1"></a>mod1<span class="ot">&lt;-</span><span class="fu">glm</span>(resp <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">1</span>))</span>
+<span id="cb10-2"><a href="DRM.html#cb10-2" aria-hidden="true" tabindex="-1"></a>pred1<span class="ot">&lt;-</span><span class="fu">predict</span>(mod1)</span>
+<span id="cb10-3"><a href="DRM.html#cb10-3" aria-hidden="true" tabindex="-1"></a>ld70.lm <span class="ot">=</span> x[<span class="fu">which</span>(pred1 <span class="sc">&gt;</span><span class="fl">0.69</span> <span class="sc">&amp;</span> pred1 <span class="sc">&lt;</span><span class="fl">0.71</span>)] <span class="sc">%&gt;%</span> <span class="fu">min</span>(.)</span>
+<span id="cb10-4"><a href="DRM.html#cb10-4" aria-hidden="true" tabindex="-1"></a>ld70.lm</span></code></pre></div>
+<pre><code>## [1] 6.47</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="DRM.html#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">dose =</span> x, <span class="at">response=</span> resp)</span>
+<span id="cb12-2"><a href="DRM.html#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="DRM.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="DRM.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb12-5"><a href="DRM.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> <span class="fu">sigmoid.f</span>(dose)), <span class="at">color =</span><span class="st">&#39;red&#39;</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="DRM.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> <span class="fu">predict</span>(<span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>)))), <span class="at">color =</span><span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="DRM.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span>   <span class="dv">5</span>, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="DRM.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.7</span>, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="DRM.html#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span>ld70.sm <span class="sc">-</span><span class="dv">1</span>,  <span class="at">y=</span><span class="fl">0.9</span>, <span class="at">label=</span><span class="st">&quot;LD70&quot;</span>,  </span>
+<span id="cb12-10"><a href="DRM.html#cb12-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">hjust=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="DRM.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>ld70.sm <span class="sc">-</span><span class="dv">1</span>, <span class="at">xend=</span>ld70.sm, <span class="at">y=</span><span class="fl">0.85</span>, <span class="at">yend=</span><span class="fl">0.7</span>), <span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&#39;grey30&#39;</span>,</span>
+<span id="cb12-12"><a href="DRM.html#cb12-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb12-13"><a href="DRM.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span>ld70.lm <span class="sc">+</span><span class="dv">1</span>,  <span class="at">y=</span><span class="fl">0.0</span>, <span class="at">label=</span><span class="st">&quot;LD70 by linear assumption&quot;</span>,  </span>
+<span id="cb12-14"><a href="DRM.html#cb12-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">hjust=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="DRM.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>ld70.lm <span class="sc">+</span><span class="dv">1</span>, <span class="at">xend=</span>ld70.lm, <span class="at">y=</span><span class="fl">0.05</span>, <span class="at">yend=</span><span class="fl">0.7</span>), <span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&#39;grey30&#39;</span>,</span>
+<span id="cb12-16"><a href="DRM.html#cb12-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>))</span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20sigmoid%20curve%202-1.png" width="672" /></p>
+<p>가상의 자료입니다. 그래도 중요하게 기억할 점은 선형과 비선형 커브로 할 경우 LD70이 달라지고, 독성에 대한 설명이 달라집니다. 따라서 어떠한 방식으로 설명할지 꼭 고민해야 합니다. <br>
+저 농도나 고농도에서는 더 큰 차이가 나타납니다. 그런데 대 부분 저농도의 노동자 들이나 고농도 노출의 노동자가 연구에 참여하기 어려운 상황이 발생합니다. 앞서 계속해서 이야기하는 건강근로자 효과 등을 상기 시켜 봅시다. <br>
+그럼 어떤 모델이 가장 적당할 까요? 우선 모델 적합도를 설명도로 비교해 볼 수 있습니다.</p>
+</div>
+<div id="코호트-특성에-따른-상황" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> 코호트 특성에 따른 상황</h2>
+<p>첫 수업 시간에 이야기한 것 처럼, 처음에는 질병이 생긴 노동자 위주로 연구가 진행되게 됩니다. 따라서 고농도 노출자 이면서 질병이 있는 사람으로 구성된 데이터에서는 상대적으로 높은 농도에서 질병이 발생하는 연구 결과과 발표 되기도 합니다. 그리고 그림에서 보듯이 선형관계를 고민하지 않는 다면 어디를 기준으로 해야할지 알 수 없는 상태입니다. <br>
+결론적으로 <strong>위험하다</strong> 는 알수 있지만, <strong>얼마나 위험하다</strong>는 아직 연구가 되지 않은 상태라는 것을 기억해야 합니다.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="DRM.html#cb13-1" aria-hidden="true" tabindex="-1"></a>early_cohort <span class="ot">=</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dose <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb13-2"><a href="DRM.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="DRM.html#cb13-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="DRM.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="DRM.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb13-6"><a href="DRM.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> <span class="fu">sigmoid.f</span>(dose)), <span class="at">color =</span><span class="st">&#39;red&#39;</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="DRM.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> <span class="fu">predict</span>(<span class="fu">lm</span>(response <span class="sc">~</span> dose))), <span class="at">color =</span><span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="DRM.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span>   <span class="dv">5</span>, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="DRM.html#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.7</span>, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">&#39;grey50&#39;</span>) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="DRM.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add 1 </span></span>
+<span id="cb13-11"><a href="DRM.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fu">c</span>(<span class="fl">7.5</span>),  <span class="at">y=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.2</span>), </span>
+<span id="cb13-12"><a href="DRM.html#cb13-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">label=</span><span class="st">&quot;Early cohort (hospital base)&quot;</span>,  <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">hjust=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="DRM.html#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data=</span>df[<span class="dv">1</span>,],<span class="fu">aes</span>(<span class="at">xmin=</span><span class="sc">-</span><span class="cn">Inf</span>,   <span class="at">xmax=</span><span class="dv">5</span>, <span class="at">ymin=</span><span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax=</span><span class="cn">Inf</span>), </span>
+<span id="cb13-14"><a href="DRM.html#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill=</span> <span class="st">&#39;grey&#39;</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="DRM.html#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> early_cohort,</span>
+<span id="cb13-16"><a href="DRM.html#cb13-16" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">y=</span> <span class="fu">predict</span>(<span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">poly</span>(dose,<span class="dv">3</span>)))), <span class="at">color =</span><span class="st">&#39;orange&#39;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="DRM.html#cb13-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span>ld70.sm <span class="sc">-</span><span class="dv">1</span>,  <span class="at">y=</span><span class="fl">0.9</span>, <span class="at">label=</span><span class="st">&quot;LD70&quot;</span>,  </span>
+<span id="cb13-18"><a href="DRM.html#cb13-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">hjust=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="DRM.html#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>ld70.sm <span class="sc">-</span><span class="dv">1</span>, <span class="at">xend=</span>ld70.sm, <span class="at">y=</span><span class="fl">0.85</span>, <span class="at">yend=</span><span class="fl">0.7</span>), <span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&#39;grey30&#39;</span>,</span>
+<span id="cb13-20"><a href="DRM.html#cb13-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb13-21"><a href="DRM.html#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">&quot;text&quot;</span>, <span class="at">x=</span>ld70.lm <span class="sc">+</span><span class="dv">1</span>,  <span class="at">y=</span><span class="fl">0.0</span>, <span class="at">label=</span><span class="st">&quot;LD70 by linear assumption&quot;</span>,  </span>
+<span id="cb13-22"><a href="DRM.html#cb13-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">hjust=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb13-23"><a href="DRM.html#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>ld70.lm <span class="sc">+</span><span class="dv">1</span>, <span class="at">xend=</span>ld70.lm, <span class="at">y=</span><span class="fl">0.05</span>, <span class="at">yend=</span><span class="fl">0.7</span>), <span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">color=</span><span class="st">&#39;grey30&#39;</span>,</span>
+<span id="cb13-24"><a href="DRM.html#cb13-24" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>))</span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20model%20comparision-1.png" width="672" /></p>
+</div>
+<div id="코호트-특성에-따른-상황과-이론적-모델" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> 코호트 특성에 따른 상황과 이론적 모델</h2>
+<p>어느정도 잘 갖추어진 코호트를 생각해 보겠습니다. Dose 2 부터 노출된 사람을 대상으로 하였다고 가정하겠습니다.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="DRM.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subcohort 2nd phase (1st phase is hospital base cohort)</span></span>
+<span id="cb14-2"><a href="DRM.html#cb14-2" aria-hidden="true" tabindex="-1"></a>s2c <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dose <span class="sc">&gt;</span><span class="dv">2</span>)</span>
+<span id="cb14-3"><a href="DRM.html#cb14-3" aria-hidden="true" tabindex="-1"></a>s2m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb14-4"><a href="DRM.html#cb14-4" aria-hidden="true" tabindex="-1"></a>s2m2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">2</span>))</span>
+<span id="cb14-5"><a href="DRM.html#cb14-5" aria-hidden="true" tabindex="-1"></a>s2m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb14-6"><a href="DRM.html#cb14-6" aria-hidden="true" tabindex="-1"></a>s2m4<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">4</span>))</span>
+<span id="cb14-7"><a href="DRM.html#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="DRM.html#cb14-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="DRM.html#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="DRM.html#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb14-11"><a href="DRM.html#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>s2c, <span class="at">color =</span> <span class="st">&#39;grey40&#39;</span>, <span class="at">size =</span><span class="dv">2</span>   ) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="DRM.html#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m1)), <span class="at">color =</span> <span class="st">&#39;chocolate1&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="DRM.html#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m2)), <span class="at">color =</span> <span class="st">&#39;chartreuse1&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="DRM.html#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m3)), <span class="at">color =</span> <span class="st">&#39;cadetblue1&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="DRM.html#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m4)), <span class="at">color =</span> <span class="st">&#39;deeppink1&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20model%20comparision%203-1.png" width="672" />
+모델로 보면 선형 예측이 모형 적합도가 가장 낮다(low)고 나타나고 차수가 높을 수록 좋다고 나타나고 있습니다. 그런데, 어떤게 더 맞을 까요?.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="DRM.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s2m1, s2m2, s2m3, s2m4) </span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: response ~ poly(dose, 1)
+## Model 2: response ~ poly(dose, 2)
+## Model 3: response ~ poly(dose, 3)
+## Model 4: response ~ poly(dose, 4)
+##   Res.Df     RSS Df Sum of Sq        F  Pr(&gt;F)    
+## 1    798 18.9099                                  
+## 2    797 13.4734  1    5.4365 440.8574 &lt; 2e-16 ***
+## 3    796  9.8806  1    3.5928 291.3455 &lt; 2e-16 ***
+## 4    795  9.8036  1    0.0770   6.2423 0.01267 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>만약 농도가 높을 때 낮아지고 있는 부분을 고려한다면 어떻게 될까요? (실제로도 농도가 높은 곳에 근무하는 노동자는 만성 질병이 일어나기 전에 손상으로 사망하는 연구가 있습니다. ) 따라서 그런 산업보건적 특성을 고려하면 어떻게 될 까요? 단순하게 9 이상 농도를 고려하지 않도록 하겠습니다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="DRM.html#cb17-1" aria-hidden="true" tabindex="-1"></a>s3c <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dose <span class="sc">&gt;</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dose <span class="sc">&lt;</span><span class="dv">9</span>)</span>
+<span id="cb17-2"><a href="DRM.html#cb17-2" aria-hidden="true" tabindex="-1"></a>s3m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb17-3"><a href="DRM.html#cb17-3" aria-hidden="true" tabindex="-1"></a>s3m2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">2</span>))</span>
+<span id="cb17-4"><a href="DRM.html#cb17-4" aria-hidden="true" tabindex="-1"></a>s3m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb17-5"><a href="DRM.html#cb17-5" aria-hidden="true" tabindex="-1"></a>s3m4<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">4</span>))</span>
+<span id="cb17-6"><a href="DRM.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="DRM.html#cb17-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="DRM.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="DRM.html#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb17-10"><a href="DRM.html#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>s3c, <span class="at">color =</span> <span class="st">&#39;grey40&#39;</span>, <span class="at">size =</span><span class="dv">2</span>   ) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="DRM.html#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line(data=s2c, aes(y=predict(s2m1)), color = &#39;grey30&#39;, size = 1) +</span></span>
+<span id="cb17-12"><a href="DRM.html#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m4)), <span class="at">color =</span> <span class="st">&#39;grey30&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="DRM.html#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line(data=s3c, aes(y=predict(s3m1)), color = &#39;orange&#39;, size = 1) </span></span>
+<span id="cb17-14"><a href="DRM.html#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s3c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s3m4)), <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20model%20comparision%204-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="DRM.html#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="DRM.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="DRM.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb18-4"><a href="DRM.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>s3c, <span class="at">color =</span> <span class="st">&#39;grey40&#39;</span>, <span class="at">size =</span><span class="dv">2</span>   ) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="DRM.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s2c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s2m1)), <span class="at">color =</span> <span class="st">&#39;grey30&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="DRM.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line(data=s2c, aes(y=predict(s2m4)), color = &#39;grey30&#39;, size = 1) +</span></span>
+<span id="cb18-7"><a href="DRM.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s3c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s3m1)), <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20model%20comparision%204-2.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="DRM.html#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line(data=s3c, aes(y=predict(s3m4)), color = &#39;orange&#39;, size = 1) </span></span></code></pre></div>
+<p>3차 이상의 모형에서는 큰 차이가 나지 않지만, 선형 모형에서는 차이가 상당합니다. 어떤 것이 더 맞다는 것은 아직 논할 단계는 아니고, 차이가 있다는 것을 기억하면 좋겠습니다. 그래서 실제 보고하고 적용할 때 현장에 더 적합한 것이 무엇인지, 목적이 보호 인지, 보상인지 등을 고려하여 해야 겠습니다.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="DRM.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gam)</span>
+<span id="cb20-2"><a href="DRM.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">######전체 자료 실습</span></span>
+<span id="cb20-3"><a href="DRM.html#cb20-3" aria-hidden="true" tabindex="-1"></a>s4c <span class="ot">=</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dose <span class="sc">&lt;</span><span class="dv">9</span>)</span>
+<span id="cb20-4"><a href="DRM.html#cb20-4" aria-hidden="true" tabindex="-1"></a>s4m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb20-5"><a href="DRM.html#cb20-5" aria-hidden="true" tabindex="-1"></a>s4m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, response <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb20-6"><a href="DRM.html#cb20-6" aria-hidden="true" tabindex="-1"></a>s4ms<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, response <span class="sc">~</span> <span class="fu">sigmoid.f</span>(dose<span class="dv">-5</span>))</span>
+<span id="cb20-7"><a href="DRM.html#cb20-7" aria-hidden="true" tabindex="-1"></a>s4mg<span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="at">data=</span>s4c, response <span class="sc">~</span> <span class="fu">s</span>(dose, <span class="dv">20</span>))</span>
+<span id="cb20-8"><a href="DRM.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s4m1, s4m3, s4ms, s4mg)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: response ~ poly(dose, 1)
+## Model 2: response ~ poly(dose, 3)
+## Model 3: response ~ sigmoid.f(dose - 5)
+## Model 4: response ~ s(dose, 20)
+##   Res.Df    RSS     Df Sum of Sq       F    Pr(&gt;F)    
+## 1    898 14.876                                       
+## 2    896 10.064  2.000     4.812  233.61 &lt; 2.2e-16 ***
+## 3    898 67.272 -2.000   -57.208 2777.26 &lt; 2.2e-16 ***
+## 4    879  9.053 18.999    58.219  297.52 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="DRM.html#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="DRM.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>dose, <span class="at">y=</span>response)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="DRM.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;grey80&#39;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb22-4"><a href="DRM.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>s4c, <span class="at">color =</span> <span class="st">&#39;grey40&#39;</span>, <span class="at">size =</span><span class="dv">2</span>   ) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="DRM.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s4c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s4m1)), <span class="at">color =</span> <span class="st">&#39;grey10&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="DRM.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s4c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s4m3)), <span class="at">color =</span> <span class="st">&#39;grey30&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="DRM.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s4c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s4ms)), <span class="at">color =</span> <span class="st">&#39;deepskyblue&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="DRM.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>s4c, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">predict</span>(s4mg)), <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>, <span class="at">size =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="methods_files/figure-html/drm%20model%20comparision%205-1.png" width="672" /></p>
+<div id="take-home-message" class="section level3" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Take home message</h3>
+<ol style="list-style-type: decimal">
+<li><p>high dose exposure cohort: there might be no dose-response relationship (high SMR but no linear relationship)</p></li>
+<li><p>moderate dose exposure cohort: there were dose-response relationship, healthy worker effect could attenuate those relationship</p></li>
+<li><p>all dose exposure cohort: there were dose-response relationship, and can control healthy worker effect
+Over or Underestimation of LD50 can be occured during model selection steps.
+Best model is not represented of real world, because data generally squared by health worker effect.</p></li>
+<li><p>create your own model!!!</p></li>
+</ol>
+</div>
+</div>
+<div id="threshold-찾기-change-point-찾기" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Threshold 찾기 (change point 찾기)</h2>
+<blockquote>
+<p>reference</p>
+</blockquote>
+<p><a href="https://dspubs.org/doc/dspubsbook/repeated-analysis.html#%EB%B6%84%EC%84%9D-%EB%B0%98%EB%B3%B5%ED%95%98%EA%B8%B0-change-point-%EC%B0%BE%EA%B8%B0">DsPub 강의록</a></p>
+<p>threshold를 찾는 방법 중에 threshold point마다, piecewise regression을 반복해서 구하고, 최적의 모델을 찾는 방법을 사용할 수 있습니다. piecewise regression 의 간단한 설명은 다음과 같습니다</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LENHutK1knQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<table>
+<thead>
+<tr class="header">
+<th>threshold points (piecewise regression)</th>
+<th>codes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>total</td>
+<td>Resp = α + β1 · Dose + β2 ·( Dose – Ɵ) + + Ɛ0</td>
+</tr>
+<tr class="even">
+<td>If Dose &lt; Ɵ</td>
+<td>Resp= α + β1 · Dose + Ɛ0</td>
+</tr>
+<tr class="odd">
+<td>If Dose &gt; Ɵ</td>
+<td>Resp= α - β2 ·Ɵ +( β1 + β2 )· Dose + Ɛ0</td>
+</tr>
+<tr class="even">
+<td>model selection</td>
+<td>minimal AIC value</td>
+</tr>
+</tbody>
+</table>
+<div id="자료-생성" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> 자료 생성</h3>
+<p>아래 처럼 임로 데이터를 생성해 보았습니다. 어떤 유해물질 노출 (Dose) 에 따라 건강영향 (Resp) 가 나타났다고 생각해 보겠습니다. 그리고 일정량에서 threshold가 있다고 생각해보겠습니다.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="DRM.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb23-2"><a href="DRM.html#cb23-2" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb23-3"><a href="DRM.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(dose)</span></code></pre></div>
+<pre><code>## [1] 101</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="DRM.html#cb25-1" aria-hidden="true" tabindex="-1"></a>pb<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="fl">0.001</span>), <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">0</span>, <span class="fl">0.01</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),<span class="fu">rnorm</span>(<span class="dv">11</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.05</span>))</span>
+<span id="cb25-2"><a href="DRM.html#cb25-2" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>(dose<span class="dv">-5</span>)))<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(dose), <span class="dv">0</span>, <span class="fl">0.1</span>)<span class="sc">+</span>pb</span>
+<span id="cb25-3"><a href="DRM.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="DRM.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dose, resp, <span class="at">xlab=</span><span class="st">&#39;Dose&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Response&#39;</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>, <span class="at">cex.sub=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/cohort%20threshold-1.png" width="672" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="DRM.html#cb26-1" aria-hidden="true" tabindex="-1"></a>cohort<span class="ot">&lt;-</span><span class="fu">data.frame</span>(dose, resp, pb)</span></code></pre></div>
+</div>
+<div id="가상의-threshold-값-수행해보기" class="section level3" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> 가상의 threshold 값 수행해보기</h3>
+<p>한 1에서 5 사이에 있어 보입니다. 이를 통해 예상되는 matrix (outdata)를 구해보았습니다.
+outdata의 행의 이름을 <code>threshold point</code>에 따라 <code>intercept</code>, <code>beta for before threshold, and its p value</code>, <code>beta for post threshold and its pvalue</code>와 그때은 <code>AIC 값</code>을 구해보겠습니다 .
+우선 하나만 구해보겠습니다. therhold가 1일때와 5일때를 를 가정해 보겠습니다.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="DRM.html#cb27-1" aria-hidden="true" tabindex="-1"></a>cpdose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span><span class="dv">1</span> <span class="sc">&gt;</span><span class="dv">0</span>, dose <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb27-2"><a href="DRM.html#cb27-2" aria-hidden="true" tabindex="-1"></a>cpm <span class="ot">&lt;-</span> <span class="fu">glm</span>(resp <span class="sc">~</span> dose <span class="sc">+</span> cpdose)</span>
+<span id="cb27-3"><a href="DRM.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cpm)<span class="sc">$</span>aic</span></code></pre></div>
+<pre><code>## [1] -92.20184</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="DRM.html#cb29-1" aria-hidden="true" tabindex="-1"></a>cpdose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span><span class="dv">5</span> <span class="sc">&gt;</span><span class="dv">0</span>, dose <span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>)</span>
+<span id="cb29-2"><a href="DRM.html#cb29-2" aria-hidden="true" tabindex="-1"></a>cpm <span class="ot">&lt;-</span> <span class="fu">glm</span>(resp <span class="sc">~</span> dose <span class="sc">+</span> cpdose)</span>
+<span id="cb29-3"><a href="DRM.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cpm)<span class="sc">$</span>aic</span></code></pre></div>
+<pre><code>## [1] -86.9744</code></pre>
+<p>어떤 가정이 모델 적합도를 높이나요? 네 threshold가 1일 때 입니다. 그럼 2랑도, 2.5랑도 비교해 봐야겠지요. 이때 반복 분석을 수행해보도록 하겠습니다.</p>
+<p>위의 모델을 함수로 만들었습니다</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="DRM.html#cb31-1" aria-hidden="true" tabindex="-1"></a>thr_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(thres){</span>
+<span id="cb31-2"><a href="DRM.html#cb31-2" aria-hidden="true" tabindex="-1"></a>cpdose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span> thres <span class="sc">&gt;</span><span class="dv">0</span>, dose <span class="sc">-</span> thres, <span class="dv">0</span>)</span>
+<span id="cb31-3"><a href="DRM.html#cb31-3" aria-hidden="true" tabindex="-1"></a>cpm    <span class="ot">&lt;-</span> <span class="fu">glm</span>(resp <span class="sc">~</span> dose <span class="sc">+</span> cpdose)</span>
+<span id="cb31-4"><a href="DRM.html#cb31-4" aria-hidden="true" tabindex="-1"></a>aic    <span class="ot">&lt;-</span> <span class="fu">summary</span>(cpm)<span class="sc">$</span>aic</span>
+<span id="cb31-5"><a href="DRM.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb31-6"><a href="DRM.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;threshold&#39;</span> <span class="ot">=</span> thres,</span>
+<span id="cb31-7"><a href="DRM.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;aic&#39;</span>       <span class="ot">=</span> aic)</span>
+<span id="cb31-8"><a href="DRM.html#cb31-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>이것을 돌릴 범위를 정해보겠습니다.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="DRM.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이게 어떤 의미 일까요?</span></span>
+<span id="cb32-2"><a href="DRM.html#cb32-2" aria-hidden="true" tabindex="-1"></a>dose[<span class="fu">which</span>(dose <span class="sc">==</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">which</span>(dose <span class="sc">==</span> <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8
+## [20] 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7
+## [39] 4.8 4.9 5.0</code></pre>
+<p>이제 반복해서 작업해 보겠습니다.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="DRM.html#cb34-1" aria-hidden="true" tabindex="-1"></a>simul_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb34-2"><a href="DRM.html#cb34-2" aria-hidden="true" tabindex="-1"></a>simul_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dose[<span class="fu">which</span>(dose <span class="sc">==</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">which</span>(dose <span class="sc">==</span><span class="dv">5</span>)],                     thr_fun</span>
+<span id="cb34-3"><a href="DRM.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                     )</span></code></pre></div>
+<p>이제 데이터 프레임으로 만들어 보겠습니다.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="DRM.html#cb35-1" aria-hidden="true" tabindex="-1"></a>simul_dat <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, simul_list)</span></code></pre></div>
+<p>그림을 그려보겠습니다.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="DRM.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb36-2"><a href="DRM.html#cb36-2" aria-hidden="true" tabindex="-1"></a>opt.thres <span class="ot">&lt;-</span> simul_dat<span class="sc">$</span>threshold[<span class="fu">which.min</span>(simul_dat<span class="sc">$</span>aic)]</span>
+<span id="cb36-3"><a href="DRM.html#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="DRM.html#cb36-4" aria-hidden="true" tabindex="-1"></a>simul_dat <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="DRM.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> threshold, <span class="at">y =</span> aic)) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="DRM.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb36-7"><a href="DRM.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> opt.thres) <span class="sc">+</span></span>
+<span id="cb36-8"><a href="DRM.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">x =</span> opt.thres <span class="sc">+</span> <span class="fl">0.8</span>, <span class="at">y =</span> <span class="sc">-</span><span class="dv">90</span>, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>, </span>
+<span id="cb36-9"><a href="DRM.html#cb36-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(opt.thres, <span class="dv">3</span>), <span class="st">&#39;점에서 최소 AIC를 보입니다.&#39;</span> )) <span class="sc">+</span></span>
+<span id="cb36-10"><a href="DRM.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="methods_files/figure-html/threshold%20pcw%20lapply-1.png" width="672" /></p>
+<p>즉 2.1에서 threshold를 잡아 모델을 그리면 가장 적합함을 알 수 있습니다.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="DRM.html#cb37-1" aria-hidden="true" tabindex="-1"></a>thres <span class="ot">=</span> <span class="fl">2.1</span></span>
+<span id="cb37-2"><a href="DRM.html#cb37-2" aria-hidden="true" tabindex="-1"></a>f_cpdose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span> thres <span class="sc">&gt;</span><span class="dv">0</span>, dose <span class="sc">-</span> thres, <span class="dv">0</span>)</span>
+<span id="cb37-3"><a href="DRM.html#cb37-3" aria-hidden="true" tabindex="-1"></a>f_cpm    <span class="ot">&lt;-</span> <span class="fu">glm</span>(resp <span class="sc">~</span> dose <span class="sc">+</span> f_cpdose)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="DRM.html#cb38-1" aria-hidden="true" tabindex="-1"></a>prepwlm <span class="ot">&lt;-</span> <span class="fu">predict</span>(f_cpm)</span>
+<span id="cb38-2"><a href="DRM.html#cb38-2" aria-hidden="true" tabindex="-1"></a>scaleFUN <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, x)</span>
+<span id="cb38-3"><a href="DRM.html#cb38-3" aria-hidden="true" tabindex="-1"></a>cohort <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="DRM.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> dose, <span class="at">y =</span> resp)) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="DRM.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb38-6"><a href="DRM.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb38-7"><a href="DRM.html#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scaleFUN) <span class="sc">+</span></span>
+<span id="cb38-8"><a href="DRM.html#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> prepwlm), <span class="at">color =</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/threshold%20model%20fitting%20predict-1.png" width="672" /></p>
+<p>만약 threshold 전에는 질병이 생기지 않는다고 가정하면 어떻게 될가요? dose 대신 predose 를 넣어 주면 됩니다.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="DRM.html#cb39-1" aria-hidden="true" tabindex="-1"></a>thres <span class="ot">=</span> <span class="fl">2.1</span></span>
+<span id="cb39-2"><a href="DRM.html#cb39-2" aria-hidden="true" tabindex="-1"></a>f_cpdose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span> thres <span class="sc">&gt;=</span><span class="dv">0</span>, dose <span class="sc">-</span> thres, <span class="dv">0</span>)</span>
+<span id="cb39-3"><a href="DRM.html#cb39-3" aria-hidden="true" tabindex="-1"></a>f_predose <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dose <span class="sc">-</span> thres <span class="sc">&lt;=</span><span class="dv">0</span>, <span class="dv">0</span>, dose <span class="sc">-</span> thres )</span>
+<span id="cb39-4"><a href="DRM.html#cb39-4" aria-hidden="true" tabindex="-1"></a>f_cpm    <span class="ot">&lt;-</span> <span class="fu">glm</span>(resp <span class="sc">~</span> f_predose <span class="sc">+</span> f_cpdose)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="DRM.html#cb40-1" aria-hidden="true" tabindex="-1"></a>prepwlm <span class="ot">&lt;-</span> <span class="fu">predict</span>(f_cpm)</span>
+<span id="cb40-2"><a href="DRM.html#cb40-2" aria-hidden="true" tabindex="-1"></a>scaleFUN <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, x)</span>
+<span id="cb40-3"><a href="DRM.html#cb40-3" aria-hidden="true" tabindex="-1"></a>cohort <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="DRM.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> dose, <span class="at">y =</span> resp)) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="DRM.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-6"><a href="DRM.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb40-7"><a href="DRM.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scaleFUN) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="DRM.html#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> prepwlm), <span class="at">color =</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/threshold%20model%20fitting%20predict%202-1.png" width="672" /></p>
+</div>
+<div id="과제" class="section level3" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> 과제</h3>
+<p>dose가 6부터 10사일에서 change point 가 있다고 가정하고 반복 분석해서 AIC값이 최저인 change point를 찾아 부세요
+code를 올려주시면 됩니다.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="claim-rate-proportional-rate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nested-case-control-study.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["methods.pdf", "methods.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
