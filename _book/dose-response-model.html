@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Dose Response Model | 직업환경보건 연구방법론</title>
+  <meta name="description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Dose Response Model | 직업환경보건 연구방법론" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Dose Response Model | 직업환경보건 연구방법론" />
+  
+  <meta name="twitter:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+<meta name="author" content="윤진하" />
+
+
+<meta name="date" content="2021-11-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="claim-rate-proportional-rate.html"/>
+<link rel="next" href="nested-case-control-study.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 소개</a></li>
+<li class="chapter" data-level="2" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html"><i class="fa fa-check"></i><b>2</b> 직업병 연구방법론 개론</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html#보건학-우선순위"><i class="fa fa-check"></i><b>2.1</b> 보건학 우선순위</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html"><i class="fa fa-check"></i><b>3</b> Claim Rate &amp; Proportional Rate</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim"><i class="fa fa-check"></i><b>3.1</b> 승인률</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-표준화"><i class="fa fa-check"></i><b>3.1.1</b> 데이터 표준화</a></li>
+<li class="chapter" data-level="3.1.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최근-5년-산재-신청-건수-및-승인률"><i class="fa fa-check"></i><b>3.1.2</b> 최근 5년 산재 신청 건수 및 승인률</a></li>
+<li class="chapter" data-level="3.1.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암-승인률"><i class="fa fa-check"></i><b>3.1.3</b> 암 승인률</a></li>
+<li class="chapter" data-level="3.1.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암종별-승인률"><i class="fa fa-check"></i><b>3.1.4</b> 암종별 승인률</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim2"><i class="fa fa-check"></i><b>3.2</b> 신청률</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-불러오기"><i class="fa fa-check"></i><b>3.2.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="3.2.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-표준화"><i class="fa fa-check"></i><b>3.2.2</b> 질병 표준화</a></li>
+<li class="chapter" data-level="3.2.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-표준화"><i class="fa fa-check"></i><b>3.2.3</b> 업종 표준화</a></li>
+<li class="chapter" data-level="3.2.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병업종-점수화-10점-만점"><i class="fa fa-check"></i><b>3.2.4</b> 질병/업종 점수화 (10점 만점)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비-claim-rate-ratio"><i class="fa fa-check"></i><b>3.2.5</b> 신청률비 (claim rate ratio)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비-proportional-claim-ratio"><i class="fa fa-check"></i><b>3.2.6</b> 비례신청비 (Proportional claim ratio)</a></li>
+<li class="chapter" data-level="3.2.7" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#통합-데이터-산출"><i class="fa fa-check"></i><b>3.2.7</b> 통합 데이터 산출</a></li>
+<li class="chapter" data-level="3.2.8" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-저장"><i class="fa fa-check"></i><b>3.2.8</b> 데이터 저장</a></li>
+<li class="chapter" data-level="3.2.9" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-점수"><i class="fa fa-check"></i><b>3.2.9</b> 업종 점수</a></li>
+<li class="chapter" data-level="3.2.10" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-점수"><i class="fa fa-check"></i><b>3.2.10</b> 질병 점수</a></li>
+<li class="chapter" data-level="3.2.11" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-x-질병-조합-점수"><i class="fa fa-check"></i><b>3.2.11</b> 업종 X 질병 조합 점수</a></li>
+<li class="chapter" data-level="3.2.12" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비"><i class="fa fa-check"></i><b>3.2.12</b> 신청률비</a></li>
+<li class="chapter" data-level="3.2.13" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비"><i class="fa fa-check"></i><b>3.2.13</b> 비례신청비</a></li>
+<li class="chapter" data-level="3.2.14" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-점수"><i class="fa fa-check"></i><b>3.2.14</b> 최종 점수</a></li>
+<li class="chapter" data-level="3.2.15" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선순위-집단"><i class="fa fa-check"></i><b>3.2.15</b> 우선순위 집단</a></li>
+<li class="chapter" data-level="3.2.16" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선-순위-집단별-관찰"><i class="fa fa-check"></i><b>3.2.16</b> 우선 순위 집단별 관찰</a></li>
+<li class="chapter" data-level="3.2.17" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질적-우선순위-고려"><i class="fa fa-check"></i><b>3.2.17</b> 질적 우선순위 고려</a></li>
+<li class="chapter" data-level="3.2.18" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병군-제외"><i class="fa fa-check"></i><b>3.2.18</b> 질병군 제외</a></li>
+<li class="chapter" data-level="3.2.19" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-우선-순위-점수"><i class="fa fa-check"></i><b>3.2.19</b> 최종 우선 순위 점수</a></li>
+<li class="chapter" data-level="3.2.20" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-대분류별-우선순위"><i class="fa fa-check"></i><b>3.2.20</b> 업종 대분류별 우선순위</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dose-response-model.html"><a href="dose-response-model.html"><i class="fa fa-check"></i><b>4</b> Dose Response Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="dose-response-model.html"><a href="dose-response-model.html#exposure-dose-and-health"><i class="fa fa-check"></i><b>4.1</b> Exposure (Dose) and Health</a></li>
+<li class="chapter" data-level="4.2" data-path="dose-response-model.html"><a href="dose-response-model.html#community-base-cohort-study"><i class="fa fa-check"></i><b>4.2</b> community base cohort study</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html"><i class="fa fa-check"></i><b>5</b> Nested Case Control Study</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#simple-tutor-for-nested-case-control-ncc-study"><i class="fa fa-check"></i><b>5.1</b> simple tutor for nested case control (NCC) study</a></li>
+<li class="chapter" data-level="5.2" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#sampling-schemes-for-nested-case-control-studies"><i class="fa fa-check"></i><b>5.2</b> Sampling schemes for nested case-control studies</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tsregression.html"><a href="tsregression.html"><i class="fa fa-check"></i><b>6</b> Time series data analysis, regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tsregression.html"><a href="tsregression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="tsregression.html"><a href="tsregression.html#a-case-study-in-air-pollution-and-health"><i class="fa fa-check"></i><b>6.2</b> A case study in Air Pollution and Health</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tsregression.html"><a href="tsregression.html#starting-up"><i class="fa fa-check"></i><b>6.2.1</b> Starting Up</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tsregression.html"><a href="tsregression.html#statistical-issues-in-estimating-the-health-effects-of-spatialtemporal-environmental-exposures"><i class="fa fa-check"></i><b>6.2.2</b> Statistical Issues in Estimating the Health Effects of Spatial–Temporal Environmental Exposures</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tsregression.html"><a href="tsregression.html#simulation-study-for-pm10-and-cvd-mortality"><i class="fa fa-check"></i><b>6.3</b> simulation study for pm10 and cvd mortality</a></li>
+<li class="chapter" data-level="6.4" data-path="tsregression.html"><a href="tsregression.html#case-study-influenza-epidemic-and-suicide"><i class="fa fa-check"></i><b>6.4</b> case study: influenza epidemic and suicide</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tsregression.html"><a href="tsregression.html#실습-데이터"><i class="fa fa-check"></i><b>6.4.1</b> 실습 데이터</a></li>
+<li class="chapter" data-level="6.4.2" data-path="tsregression.html"><a href="tsregression.html#simple-time-related-variable-adjusting-regression"><i class="fa fa-check"></i><b>6.4.2</b> simple time-related variable adjusting regression</a></li>
+<li class="chapter" data-level="6.4.3" data-path="tsregression.html"><a href="tsregression.html#arima"><i class="fa fa-check"></i><b>6.4.3</b> ARIMA</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tsregression.html"><a href="tsregression.html#analysis-and-forecasting-regression"><i class="fa fa-check"></i><b>6.5</b> analysis and forecasting, regression</a></li>
+<li class="chapter" data-level="6.6" data-path="tsregression.html"><a href="tsregression.html#arima-1"><i class="fa fa-check"></i><b>6.6</b> ARIMA</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="tsregression.html"><a href="tsregression.html#arima-감기-자살-aic"><i class="fa fa-check"></i><b>6.6.1</b> arima 감기 자살 , AIC</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="tsregression.html"><a href="tsregression.html#aic-bic-in-generalize-additive-model"><i class="fa fa-check"></i><b>6.7</b> AIC BIC in generalize additive model</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="survival-data.html"><a href="survival-data.html"><i class="fa fa-check"></i><b>7</b> Survival Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="survival-data.html"><a href="survival-data.html#cox-proportional"><i class="fa fa-check"></i><b>7.1</b> Cox Proportional</a></li>
+<li class="chapter" data-level="7.2" data-path="survival-data.html"><a href="survival-data.html#non-proportional-model"><i class="fa fa-check"></i><b>7.2</b> non-proportional model</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="survival-data.html"><a href="survival-data.html#log-rank-test"><i class="fa fa-check"></i><b>7.2.1</b> log-rank test</a></li>
+<li class="chapter" data-level="7.2.2" data-path="survival-data.html"><a href="survival-data.html#python-tutor-윤동규"><i class="fa fa-check"></i><b>7.2.2</b> python tutor 윤동규</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Model</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mixed.html"><a href="mixed.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="mixed.html"><a href="mixed.html#data-step-1"><i class="fa fa-check"></i><b>8.2</b> data step 1</a></li>
+<li class="chapter" data-level="8.3" data-path="mixed.html"><a href="mixed.html#load-data-of-int-and-korea"><i class="fa fa-check"></i><b>8.3</b> load data of Int and Korea</a></li>
+<li class="chapter" data-level="8.4" data-path="mixed.html"><a href="mixed.html#data-merge"><i class="fa fa-check"></i><b>8.4</b> data merge</a></li>
+<li class="chapter" data-level="8.5" data-path="mixed.html"><a href="mixed.html#data-analysis-start"><i class="fa fa-check"></i><b>8.5</b> Data analysis start</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="mixed.html"><a href="mixed.html#job-loss-due-to-covid19-psychological-aggravation-according-to-gender"><i class="fa fa-check"></i><b>8.5.1</b> job loss due to COVID19, psychological aggravation according to Gender</a></li>
+<li class="chapter" data-level="8.5.2" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-age-group"><i class="fa fa-check"></i><b>8.5.2</b> job loss, psychological aggravation according to age group</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-education-level"><i class="fa fa-check"></i><b>8.6</b> job loss, psychological aggravation according to Education level</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="mixed.html"><a href="mixed.html#depression-status-according-job-loss-status"><i class="fa fa-check"></i><b>8.6.1</b> Depression status according job loss status</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="mixed.html"><a href="mixed.html#association"><i class="fa fa-check"></i><b>8.7</b> association</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="mixed.html"><a href="mixed.html#mixed-model"><i class="fa fa-check"></i><b>8.7.1</b> mixed model</a></li>
+<li class="chapter" data-level="8.7.2" data-path="mixed.html"><a href="mixed.html#mixed-model-with-human-develop-index-stratification"><i class="fa fa-check"></i><b>8.7.2</b> mixed model with human develop index stratification</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="iptw.html"><a href="iptw.html"><i class="fa fa-check"></i><b>9</b> IPTW</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="iptw.html"><a href="iptw.html#package-tutorial"><i class="fa fa-check"></i><b>9.1</b> package tutorial</a></li>
+<li class="chapter" data-level="9.2" data-path="iptw.html"><a href="iptw.html#case-study-of-noise-exposure-and-hypertension"><i class="fa fa-check"></i><b>9.2</b> case study of noise exposure and hypertension</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>10</b> simulation</a></li>
+<li class="chapter" data-level="11" data-path="jobstress.html"><a href="jobstress.html"><i class="fa fa-check"></i><b>11</b> job stress questionnaires</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jobstress.html"><a href="jobstress.html#설문지-개발"><i class="fa fa-check"></i><b>11.1</b> 설문지 개발</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="jobstress.html"><a href="jobstress.html#기본-r-준비"><i class="fa fa-check"></i><b>11.1.1</b> 기본 R 준비</a></li>
+<li class="chapter" data-level="11.1.2" data-path="jobstress.html"><a href="jobstress.html#basic-data-step"><i class="fa fa-check"></i><b>11.1.2</b> basic data step</a></li>
+<li class="chapter" data-level="11.1.3" data-path="jobstress.html"><a href="jobstress.html#설문지와-데이터-비교하기"><i class="fa fa-check"></i><b>11.1.3</b> 설문지와 데이터 비교하기</a></li>
+<li class="chapter" data-level="11.1.4" data-path="jobstress.html"><a href="jobstress.html#변수에-라벨링-붙이기"><i class="fa fa-check"></i><b>11.1.4</b> 변수에 라벨링 붙이기</a></li>
+<li class="chapter" data-level="11.1.5" data-path="jobstress.html"><a href="jobstress.html#결측값-제거"><i class="fa fa-check"></i><b>11.1.5</b> 결측값 제거</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="jobstress.html"><a href="jobstress.html#주성분분석"><i class="fa fa-check"></i><b>11.2</b> 주성분분석</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="jobstress.html"><a href="jobstress.html#주성분분석-간단-소개"><i class="fa fa-check"></i><b>11.2.1</b> 주성분분석 간단 소개</a></li>
+<li class="chapter" data-level="11.2.2" data-path="jobstress.html"><a href="jobstress.html#요인이-몇개면-좋을까"><i class="fa fa-check"></i><b>11.2.2</b> 요인이 몇개면 좋을까?</a></li>
+<li class="chapter" data-level="11.2.3" data-path="jobstress.html"><a href="jobstress.html#요인-고정-분석"><i class="fa fa-check"></i><b>11.2.3</b> 요인 고정 분석</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="jobstress.html"><a href="jobstress.html#요인-개수-정하기-신뢰도-측면"><i class="fa fa-check"></i><b>11.3</b> 요인 개수 정하기: 신뢰도 측면</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="jobstress.html"><a href="jobstress.html#신뢰도-값-cronbach-alpha"><i class="fa fa-check"></i><b>11.3.1</b> 신뢰도 값 (Cronbach alpha)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="jobstress.html"><a href="jobstress.html#요인값-활용하기"><i class="fa fa-check"></i><b>11.4</b> 요인값 활용하기</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="jobstress.html"><a href="jobstress.html#요인값-데이터화"><i class="fa fa-check"></i><b>11.4.1</b> 요인값 데이터화</a></li>
+<li class="chapter" data-level="11.4.2" data-path="jobstress.html"><a href="jobstress.html#우울증-점수-phq-9"><i class="fa fa-check"></i><b>11.4.2</b> 우울증 점수 (PHQ-9)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="jobstress.html"><a href="jobstress.html#요인별-사용-방법"><i class="fa fa-check"></i><b>11.4.3</b> 요인별 사용 방법</a></li>
+<li class="chapter" data-level="11.4.4" data-path="jobstress.html"><a href="jobstress.html#과제-소진-증후군과-감정노동"><i class="fa fa-check"></i><b>11.4.4</b> 과제: 소진 증후군과 감정노동</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="jobstress.html"><a href="jobstress.html#mediation"><i class="fa fa-check"></i><b>11.5</b> Indirect effect</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="smr.html"><a href="smr.html"><i class="fa fa-check"></i><b>12</b> 산업보건분야에서 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="smr.html"><a href="smr.html#빅데이터-위원회"><i class="fa fa-check"></i><b>12.1</b> 빅데이터 위원회</a></li>
+<li class="chapter" data-level="12.2" data-path="smr.html"><a href="smr.html#직업환경분야-건강보험공단-자료-분석"><i class="fa fa-check"></i><b>12.2</b> 직업환경분야 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="smr.html"><a href="smr.html#건강보험공단-자료-및-사용"><i class="fa fa-check"></i><b>12.2.1</b> 건강보험공단 자료 및 사용</a></li>
+<li class="chapter" data-level="12.2.2" data-path="smr.html"><a href="smr.html#건강보험공단-자료-분석-방법"><i class="fa fa-check"></i><b>12.2.2</b> 건강보험공단 자료 분석 방법</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html"><i class="fa fa-check"></i><b>13</b> Writing Scientific Manuscript for Occupational Health</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문을-작성하는-10가지-과정"><i class="fa fa-check"></i><b>13.1</b> 논문을 작성하는 10가지 과정</a></li>
+<li class="chapter" data-level="13.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#각-단계별-세부-목표"><i class="fa fa-check"></i><b>13.2</b> 각 단계별 세부 목표</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#연구-주제-선정"><i class="fa fa-check"></i><b>13.2.1</b> 연구 주제 선정</a></li>
+<li class="chapter" data-level="13.2.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#선행-연구-조사"><i class="fa fa-check"></i><b>13.2.2</b> 선행 연구 조사</a></li>
+<li class="chapter" data-level="13.2.3" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#가설-설정"><i class="fa fa-check"></i><b>13.2.3</b> 가설 설정</a></li>
+<li class="chapter" data-level="13.2.4" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문계획서-작성-irb-신청"><i class="fa fa-check"></i><b>13.2.4</b> 논문계획서 작성, IRB 신청</a></li>
+<li class="chapter" data-level="13.2.5" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-수집-변수-정의"><i class="fa fa-check"></i><b>13.2.5</b> 데이터 수집 (변수 정의)</a></li>
+<li class="chapter" data-level="13.2.6" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-분석"><i class="fa fa-check"></i><b>13.2.6</b> 데이터 분석</a></li>
+<li class="chapter" data-level="13.2.7" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문작성"><i class="fa fa-check"></i><b>13.2.7</b> 논문작성</a></li>
+<li class="chapter" data-level="13.2.8" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문투고-사독답변-예심본심"><i class="fa fa-check"></i><b>13.2.8</b> 논문투고-사독답변 (예심/본심)</a></li>
+<li class="chapter" data-level="13.2.9" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문승인"><i class="fa fa-check"></i><b>13.2.9</b> 논문승인</a></li>
+<li class="chapter" data-level="13.2.10" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#기타-정리중"><i class="fa fa-check"></i><b>13.2.10</b> 기타 정리중</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">직업환경보건 연구방법론</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dose-response-model" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Dose Response Model</h1>
+<div id="exposure-dose-and-health" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Exposure (Dose) and Health</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dose-response-model.html#cb1-1" aria-hidden="true" tabindex="-1"></a>trace.e <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">50</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb1-2"><a href="dose-response-model.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#normal range = 15~35</span></span>
+<span id="cb1-3"><a href="dose-response-model.html#cb1-3" aria-hidden="true" tabindex="-1"></a>trace.e.h<span class="ot">=</span><span class="cf">function</span> (x) {</span>
+<span id="cb1-4"><a href="dose-response-model.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(x<span class="sc">&lt;</span><span class="dv">20</span>, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">+</span><span class="dv">10</span>)),</span>
+<span id="cb1-5"><a href="dose-response-model.html#cb1-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ifelse</span>(x<span class="sc">&lt;</span><span class="dv">30</span>, <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">19</span>)), <span class="fl">0.01</span>), <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">19</span>))<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="dv">40</span><span class="sc">-</span>x))</span>
+<span id="cb1-6"><a href="dose-response-model.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb1-7"><a href="dose-response-model.html#cb1-7" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb1-8"><a href="dose-response-model.html#cb1-8" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb1-9"><a href="dose-response-model.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-10"><a href="dose-response-model.html#cb1-10" aria-hidden="true" tabindex="-1"></a>hstatus<span class="ot">&lt;-</span><span class="fu">trace.e.h</span>(trace.e)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(trace.e), <span class="dv">1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb1-11"><a href="dose-response-model.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="dose-response-model.html#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="dose-response-model.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(trace.e, hstatus, <span class="at">cex=</span><span class="fl">0.1</span>, <span class="at">col=</span><span class="st">&#39;grey&#39;</span> , <span class="at">ylab=</span><span class="st">&#39;Function&#39;</span>, <span class="at">xlab=</span><span class="st">&#39;Biological Element&#39;</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb1-14"><a href="dose-response-model.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>,  </span>
+<span id="cb1-15"><a href="dose-response-model.html#cb1-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb1-16"><a href="dose-response-model.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">7</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">3</span>,  </span>
+<span id="cb1-17"><a href="dose-response-model.html#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb1-18"><a href="dose-response-model.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">15</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">35</span>, <span class="dv">3</span>,  </span>
+<span id="cb1-19"><a href="dose-response-model.html#cb1-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.1</span>) )</span>
+<span id="cb1-20"><a href="dose-response-model.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">35</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">43</span>, <span class="dv">3</span>,  </span>
+<span id="cb1-21"><a href="dose-response-model.html#cb1-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb1-22"><a href="dose-response-model.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">43</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">55</span>, <span class="dv">3</span>,  </span>
+<span id="cb1-23"><a href="dose-response-model.html#cb1-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb1-24"><a href="dose-response-model.html#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="dose-response-model.html#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">3</span>,<span class="at">y=</span><span class="fl">1.3</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="fl">0.7</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb1-26"><a href="dose-response-model.html#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb1-27"><a href="dose-response-model.html#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Normal function&#39;</span>, <span class="at">x=</span><span class="dv">25</span>,<span class="at">y=</span><span class="fl">1.7</span>, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb1-28"><a href="dose-response-model.html#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">38</span>,<span class="at">y=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb1-29"><a href="dose-response-model.html#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">47</span>,<span class="at">y=</span><span class="fl">1.3</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>##실습 1: Disease graph 그리기</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dose-response-model.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb2-2"><a href="dose-response-model.html#cb2-2" aria-hidden="true" tabindex="-1"></a>disease <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>hstatus<span class="sc">+</span><span class="dv">5</span></span>
+<span id="cb2-3"><a href="dose-response-model.html#cb2-3" aria-hidden="true" tabindex="-1"></a>exp.b <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>trace.e <span class="sc">+</span><span class="dv">50</span></span>
+<span id="cb2-4"><a href="dose-response-model.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="dose-response-model.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(exp.b, disease, <span class="at">cex=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">&#39;orange&#39;</span> , <span class="at">ylab=</span><span class="st">&#39;Disease&#39;</span>, <span class="at">xlab=</span><span class="st">&#39;Biomarker&#39;</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb2-6"><a href="dose-response-model.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">5</span>,  </span>
+<span id="cb2-7"><a href="dose-response-model.html#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb2-8"><a href="dose-response-model.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">7</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">5</span>,  </span>
+<span id="cb2-9"><a href="dose-response-model.html#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb2-10"><a href="dose-response-model.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">15</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">35</span>, <span class="dv">5</span>,  </span>
+<span id="cb2-11"><a href="dose-response-model.html#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.1</span>) )</span>
+<span id="cb2-12"><a href="dose-response-model.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">35</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">43</span>, <span class="dv">5</span>,  </span>
+<span id="cb2-13"><a href="dose-response-model.html#cb2-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb2-14"><a href="dose-response-model.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">43</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">55</span>, <span class="dv">5</span>,  </span>
+<span id="cb2-15"><a href="dose-response-model.html#cb2-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb2-16"><a href="dose-response-model.html#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="dose-response-model.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">3</span>,<span class="at">y=</span><span class="fl">3.7</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb2-18"><a href="dose-response-model.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="fl">3.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb2-19"><a href="dose-response-model.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Normal function&#39;</span>, <span class="at">x=</span><span class="dv">25</span>,<span class="at">y=</span><span class="fl">3.3</span>, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb2-20"><a href="dose-response-model.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">38</span>,<span class="at">y=</span><span class="fl">3.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb2-21"><a href="dose-response-model.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">47</span>,<span class="at">y=</span><span class="fl">3.7</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="community-base-cohort-study" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> community base cohort study</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dose-response-model.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb3-2"><a href="dose-response-model.html#cb3-2" aria-hidden="true" tabindex="-1"></a>disease <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>hstatus<span class="sc">+</span><span class="dv">5</span></span>
+<span id="cb3-3"><a href="dose-response-model.html#cb3-3" aria-hidden="true" tabindex="-1"></a>exp.b <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>trace.e <span class="sc">+</span><span class="dv">50</span></span>
+<span id="cb3-4"><a href="dose-response-model.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="dose-response-model.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(exp.b, disease, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;orange&#39;</span> , <span class="at">ylab=</span><span class="st">&#39;Disease&#39;</span>, <span class="at">xlab=</span><span class="st">&#39;Biomarker&#39;</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb3-6"><a href="dose-response-model.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">5</span>,  </span>
+<span id="cb3-7"><a href="dose-response-model.html#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb3-8"><a href="dose-response-model.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">7</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">5</span>,  </span>
+<span id="cb3-9"><a href="dose-response-model.html#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb3-10"><a href="dose-response-model.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">15</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">35</span>, <span class="dv">5</span>,  </span>
+<span id="cb3-11"><a href="dose-response-model.html#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.1</span>) )</span>
+<span id="cb3-12"><a href="dose-response-model.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">35</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">43</span>, <span class="dv">5</span>,  </span>
+<span id="cb3-13"><a href="dose-response-model.html#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.2</span>) )</span>
+<span id="cb3-14"><a href="dose-response-model.html#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">43</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">55</span>, <span class="dv">5</span>,  </span>
+<span id="cb3-15"><a href="dose-response-model.html#cb3-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb3-16"><a href="dose-response-model.html#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="dose-response-model.html#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">3</span>,<span class="at">y=</span><span class="fl">3.7</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>, <span class="at">family=</span><span class="st">&#39;A&#39;</span>)</span>
+<span id="cb3-18"><a href="dose-response-model.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="fl">3.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb3-19"><a href="dose-response-model.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Normal function&#39;</span>, <span class="at">x=</span><span class="dv">25</span>,<span class="at">y=</span><span class="fl">3.3</span>, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb3-20"><a href="dose-response-model.html#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Disease&#39;</span>, <span class="at">x=</span><span class="dv">38</span>,<span class="at">y=</span><span class="fl">3.5</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb3-21"><a href="dose-response-model.html#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Death&#39;</span>, <span class="at">x=</span><span class="dv">47</span>,<span class="at">y=</span><span class="fl">3.7</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb3-22"><a href="dose-response-model.html#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="dose-response-model.html#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="do">## short term follow up</span></span>
+<span id="cb3-24"><a href="dose-response-model.html#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>, <span class="dv">40</span>, <span class="dv">6</span>, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.2</span>), <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>)</span>
+<span id="cb3-25"><a href="dose-response-model.html#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;Short term follow up&#39;</span>, <span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="fl">3.8</span>, <span class="at">col=</span><span class="st">&#39;purple&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb3-26"><a href="dose-response-model.html#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>,<span class="fl">3.7</span>, <span class="dv">40</span>, <span class="fl">3.7</span>, <span class="at">code=</span><span class="dv">3</span>)</span>
+<span id="cb3-27"><a href="dose-response-model.html#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="dose-response-model.html#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="do">### long term follow up</span></span>
+<span id="cb3-29"><a href="dose-response-model.html#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">10</span>,<span class="sc">-</span><span class="dv">2</span>, <span class="dv">50</span>, <span class="dv">6</span>, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="at">alpha=</span><span class="fl">0.2</span>), <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>)</span>
+<span id="cb3-30"><a href="dose-response-model.html#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;long term cumulative exposure&#39;</span>, <span class="at">x=</span><span class="dv">30</span>,<span class="at">y=</span><span class="fl">4.1</span>, <span class="at">col=</span><span class="st">&#39;purple&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb3-31"><a href="dose-response-model.html#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">10</span>,<span class="dv">4</span>, <span class="dv">50</span>, <span class="dv">4</span>, <span class="at">code=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>##1.1 sigmoid curve</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dose-response-model.html#cb4-1" aria-hidden="true" tabindex="-1"></a>dose.e<span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb4-2"><a href="dose-response-model.html#cb4-2" aria-hidden="true" tabindex="-1"></a>resp<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>dose.e))</span>
+<span id="cb4-3"><a href="dose-response-model.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dose.e, resp)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dose-response-model.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#S(x) = 1/(1+e^-x)</span></span>
+<span id="cb5-2"><a href="dose-response-model.html#cb5-2" aria-hidden="true" tabindex="-1"></a>sigmoid.f<span class="ot">=</span><span class="cf">function</span>(x) {</span>
+<span id="cb5-3"><a href="dose-response-model.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))</span>
+<span id="cb5-4"><a href="dose-response-model.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-5"><a href="dose-response-model.html#cb5-5" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb5-6"><a href="dose-response-model.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">sigmoid.f</span>(x), <span class="at">col=</span><span class="st">&#39;grey&#39;</span>, <span class="at">main=</span><span class="st">&quot;sigmoid function&quot;</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dose-response-model.html#cb6-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-2"><a href="dose-response-model.html#cb6-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">sigmoid.f</span>(x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-3"><a href="dose-response-model.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">col=</span><span class="st">&#39;grey&#39;</span>,<span class="at">main=</span><span class="st">&quot;Sigmoid curve&quot;</span>)</span>
+<span id="cb6-4"><a href="dose-response-model.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="dose-response-model.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">sigmoid.f</span>(x), <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb6-6"><a href="dose-response-model.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb6-7"><a href="dose-response-model.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="dose-response-model.html#cb6-8" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">which</span>(<span class="fu">sigmoid.f</span>(x)<span class="sc">==</span><span class="fl">0.5</span>)]</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dose-response-model.html#cb8-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">which</span>( <span class="fu">sigmoid.f</span>(x) <span class="sc">&gt;</span><span class="fl">0.48</span> <span class="sc">&amp;</span> <span class="fu">sigmoid.f</span>(x) <span class="sc">&lt;</span> <span class="fl">0.52</span>)]</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dose-response-model.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="dose-response-model.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50&#39;</span>, <span class="at">x=</span><span class="dv">1</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="dose-response-model.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span>,<span class="fl">0.9</span>, <span class="dv">0</span>,<span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="fl">0.1</span>, <span class="at">angle=</span><span class="dv">10</span>, <span class="at">code=</span><span class="dv">2</span>, <span class="at">length=</span><span class="fl">0.2</span>)</span>
+<span id="cb10-4"><a href="dose-response-model.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">########linear regression</span></span>
+<span id="cb10-5"><a href="dose-response-model.html#cb10-5" aria-hidden="true" tabindex="-1"></a>mod1<span class="ot">&lt;-</span><span class="fu">glm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb10-6"><a href="dose-response-model.html#cb10-6" aria-hidden="true" tabindex="-1"></a>pred1<span class="ot">&lt;-</span><span class="fu">predict</span>(mod1)</span>
+<span id="cb10-7"><a href="dose-response-model.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, pred1, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb10-8"><a href="dose-response-model.html#cb10-8" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">which</span>(pred1 <span class="sc">&gt;</span><span class="fl">0.498</span> <span class="sc">&amp;</span> pred1 <span class="sc">&lt;</span><span class="fl">0.51</span>)]</span></code></pre></div>
+<pre><code>## [1] 0.4 0.5</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="dose-response-model.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50 by linear regression&#39;</span>, <span class="at">x=</span><span class="dv">5</span>, <span class="at">y=</span><span class="fl">0.1</span>, <span class="at">cex=</span><span class="dv">3</span>)</span>
+<span id="cb12-2"><a href="dose-response-model.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span>,<span class="fl">0.2</span>, <span class="fl">0.7</span>,<span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="fl">0.1</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">angle=</span><span class="dv">10</span>, <span class="at">code=</span><span class="dv">2</span>, <span class="at">length=</span><span class="fl">0.2</span>, <span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="dose-response-model.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">############ 3차방정식으로 풀어보기 (실습)</span></span>
+<span id="cb13-2"><a href="dose-response-model.html#cb13-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span><span class="fu">glm</span>(y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">3</span>))</span>
+<span id="cb13-3"><a href="dose-response-model.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="dose-response-model.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">###어떤 모델이 더 피팅이 잘되냐에 대한 토론</span></span>
+<span id="cb13-5"><a href="dose-response-model.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="dose-response-model.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="dose-response-model.html#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="dose-response-model.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># high dose exposure data and low dose prevention</span></span>
+<span id="cb13-9"><a href="dose-response-model.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dose-response-model.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb14-2"><a href="dose-response-model.html#cb14-2" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="fl">0.01</span>)</span>
+<span id="cb14-3"><a href="dose-response-model.html#cb14-3" aria-hidden="true" tabindex="-1"></a>pb<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">0</span>, <span class="fl">0.001</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="fl">0.01</span>), <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),<span class="fu">rnorm</span>(<span class="dv">101</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.05</span>))</span>
+<span id="cb14-4"><a href="dose-response-model.html#cb14-4" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>(dose<span class="dv">-5</span>)))<span class="sc">+</span><span class="fu">rnorm</span>(<span class="fu">length</span>(dose), <span class="dv">0</span>, <span class="fl">0.1</span>)<span class="sc">+</span>pb</span>
+<span id="cb14-5"><a href="dose-response-model.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="dose-response-model.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dose, resp, <span class="at">xlab=</span><span class="st">&#39;Dose&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Response&#39;</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>, <span class="at">cex.sub=</span><span class="fl">1.5</span>)</span>
+<span id="cb14-7"><a href="dose-response-model.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">7</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">2</span>,  </span>
+<span id="cb14-8"><a href="dose-response-model.html#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;transparent&quot;</span>,  <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) )</span>
+<span id="cb14-9"><a href="dose-response-model.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="dose-response-model.html#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="dose-response-model.html#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="dose-response-model.html#cb14-12" aria-hidden="true" tabindex="-1"></a>cohort<span class="ot">&lt;-</span><span class="fu">data.frame</span>(dose, resp, pb)</span>
+<span id="cb14-13"><a href="dose-response-model.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="do">########s1 early cohort study</span></span>
+<span id="cb14-14"><a href="dose-response-model.html#cb14-14" aria-hidden="true" tabindex="-1"></a>s1c <span class="ot">&lt;-</span>cohort[dose<span class="sc">&gt;</span><span class="dv">7</span>,]</span>
+<span id="cb14-15"><a href="dose-response-model.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(s1c$dose, s1c$resp)</span></span>
+<span id="cb14-16"><a href="dose-response-model.html#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="dose-response-model.html#cb14-17" aria-hidden="true" tabindex="-1"></a>s1m1<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="at">data=</span>s1c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb14-18"><a href="dose-response-model.html#cb14-18" aria-hidden="true" tabindex="-1"></a>spred1<span class="ot">&lt;-</span><span class="fu">predict</span>(s1m1)</span>
+<span id="cb14-19"><a href="dose-response-model.html#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s1c<span class="sc">$</span>dose, <span class="fu">predict</span>(s1m1), <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">lwd=</span><span class="dv">5</span> )</span>
+<span id="cb14-20"><a href="dose-response-model.html#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="dose-response-model.html#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="do">######s2 well structured cohort study</span></span>
+<span id="cb14-22"><a href="dose-response-model.html#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="dose-response-model.html#cb14-23" aria-hidden="true" tabindex="-1"></a>s2c<span class="ot">&lt;-</span>cohort[dose<span class="sc">&gt;</span><span class="dv">4</span> ,]</span>
+<span id="cb14-24"><a href="dose-response-model.html#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(s2c$dose, s2c$resp, xlim=c(0,10))</span></span>
+<span id="cb14-25"><a href="dose-response-model.html#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="dose-response-model.html#cb14-26" aria-hidden="true" tabindex="-1"></a>s2m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb14-27"><a href="dose-response-model.html#cb14-27" aria-hidden="true" tabindex="-1"></a>s2m2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">2</span>))</span>
+<span id="cb14-28"><a href="dose-response-model.html#cb14-28" aria-hidden="true" tabindex="-1"></a>s2m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb14-29"><a href="dose-response-model.html#cb14-29" aria-hidden="true" tabindex="-1"></a>s2m4<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s2c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">4</span>))</span>
+<span id="cb14-30"><a href="dose-response-model.html#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="dose-response-model.html#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s2m1, s2m2, s2m3, s2m4)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: resp ~ poly(dose, 1)
+## Model 2: resp ~ poly(dose, 2)
+## Model 3: resp ~ poly(dose, 3)
+## Model 4: resp ~ poly(dose, 4)
+##   Res.Df     RSS Df Sum of Sq        F    Pr(&gt;F)    
+## 1    598 16.6208                                    
+## 2    597  8.8023  1    7.8185 557.7477 &lt; 2.2e-16 ***
+## 3    596  8.3542  1    0.4481  31.9636  2.44e-08 ***
+## 4    595  8.3407  1    0.0135   0.9661    0.3261    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="dose-response-model.html#cb16-1" aria-hidden="true" tabindex="-1"></a>fit.s3m<span class="ot">&lt;-</span>s2m3</span>
+<span id="cb16-2"><a href="dose-response-model.html#cb16-2" aria-hidden="true" tabindex="-1"></a>s2pred3<span class="ot">&lt;-</span><span class="fu">predict</span>(fit.s3m)</span>
+<span id="cb16-3"><a href="dose-response-model.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s2c<span class="sc">$</span>dose, s2pred3, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb16-4"><a href="dose-response-model.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb16-5"><a href="dose-response-model.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="dose-response-model.html#cb16-6" aria-hidden="true" tabindex="-1"></a>s2c<span class="sc">$</span>dose[<span class="fu">which</span>(s2pred3 <span class="sc">&gt;</span><span class="fl">0.498</span> <span class="sc">&amp;</span> s2pred3 <span class="sc">&lt;</span><span class="fl">0.501</span>)]</span></code></pre></div>
+<pre><code>## [1] 5.02 5.03</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dose-response-model.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#s2c$dose[which(s2pred1 &gt;0.498 &amp; s2pred1 &lt;0.501)]</span></span>
+<span id="cb18-2"><a href="dose-response-model.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50=5.02&#39;</span>, <span class="at">x=</span><span class="dv">7</span>, <span class="at">y=</span><span class="fl">0.1</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">3</span>)</span>
+<span id="cb18-3"><a href="dose-response-model.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">6</span>,<span class="fl">0.2</span>, <span class="fl">4.98</span>,<span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="fl">0.1</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">angle=</span><span class="dv">10</span>, <span class="at">code=</span><span class="dv">2</span>, <span class="at">length=</span><span class="fl">0.2</span>)</span>
+<span id="cb18-4"><a href="dose-response-model.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="dose-response-model.html#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="dose-response-model.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">#######실습.</span></span>
+<span id="cb18-7"><a href="dose-response-model.html#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="dose-response-model.html#cb18-8" aria-hidden="true" tabindex="-1"></a>s3c<span class="ot">&lt;-</span>cohort[dose<span class="sc">&gt;</span><span class="dv">4</span> <span class="sc">&amp;</span>dose<span class="sc">&lt;</span><span class="dv">8</span>,]</span>
+<span id="cb18-9"><a href="dose-response-model.html#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="dose-response-model.html#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="dose-response-model.html#cb18-11" aria-hidden="true" tabindex="-1"></a>s3m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb18-12"><a href="dose-response-model.html#cb18-12" aria-hidden="true" tabindex="-1"></a>s3m2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">2</span>))</span>
+<span id="cb18-13"><a href="dose-response-model.html#cb18-13" aria-hidden="true" tabindex="-1"></a>s3m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb18-14"><a href="dose-response-model.html#cb18-14" aria-hidden="true" tabindex="-1"></a>s3m4<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s3c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">4</span>))</span>
+<span id="cb18-15"><a href="dose-response-model.html#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="dose-response-model.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s3m1, s3m2, s3m3, s3m4)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: resp ~ poly(dose, 1)
+## Model 2: resp ~ poly(dose, 2)
+## Model 3: resp ~ poly(dose, 3)
+## Model 4: resp ~ poly(dose, 4)
+##   Res.Df    RSS Df Sum of Sq       F    Pr(&gt;F)    
+## 1    397 5.0981                                   
+## 2    396 4.4345  1   0.66360 59.6286 9.557e-14 ***
+## 3    395 4.3852  1   0.04930  4.4299   0.03595 *  
+## 4    394 4.3848  1   0.00039  0.0347   0.85224    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dose-response-model.html#cb20-1" aria-hidden="true" tabindex="-1"></a>fit.s3m<span class="ot">&lt;-</span>s3m2</span>
+<span id="cb20-2"><a href="dose-response-model.html#cb20-2" aria-hidden="true" tabindex="-1"></a>s3pred2<span class="ot">&lt;-</span><span class="fu">predict</span>(s3m2)</span>
+<span id="cb20-3"><a href="dose-response-model.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s3c<span class="sc">$</span>dose, s3pred2, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb20-4"><a href="dose-response-model.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb20-5"><a href="dose-response-model.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="dose-response-model.html#cb20-6" aria-hidden="true" tabindex="-1"></a>s3c<span class="sc">$</span>dose[<span class="fu">which</span>(s3pred2 <span class="sc">&gt;</span><span class="fl">0.498</span> <span class="sc">&amp;</span> s3pred2 <span class="sc">&lt;</span><span class="fl">0.501</span>)]</span></code></pre></div>
+<pre><code>## [1] 4.96</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="dose-response-model.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#s2c$dose[which(s2pred1 &gt;0.498 &amp; s2pred1 &lt;0.501)]</span></span>
+<span id="cb22-2"><a href="dose-response-model.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50=4.96&#39;</span>, <span class="at">x=</span><span class="dv">2</span>, <span class="at">y=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>, <span class="at">cex=</span><span class="dv">3</span>)</span>
+<span id="cb22-3"><a href="dose-response-model.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">2</span>,<span class="fl">0.95</span>, <span class="fl">4.96</span>,<span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">angle=</span><span class="dv">10</span>, <span class="at">code=</span><span class="dv">2</span>, <span class="at">length=</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dose-response-model.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">######전체 자료 실습</span></span>
+<span id="cb23-2"><a href="dose-response-model.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="dose-response-model.html#cb23-3" aria-hidden="true" tabindex="-1"></a>s4c<span class="ot">&lt;-</span>cohort[dose<span class="sc">&lt;</span><span class="dv">8</span>,]</span>
+<span id="cb23-4"><a href="dose-response-model.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(s4c<span class="sc">$</span>dose, s4c<span class="sc">$</span>resp, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">col=</span><span class="st">&#39;grey&#39;</span>)</span>
+<span id="cb23-5"><a href="dose-response-model.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="dose-response-model.html#cb23-6" aria-hidden="true" tabindex="-1"></a>s4m1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">1</span>))</span>
+<span id="cb23-7"><a href="dose-response-model.html#cb23-7" aria-hidden="true" tabindex="-1"></a>s4m2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">2</span>))</span>
+<span id="cb23-8"><a href="dose-response-model.html#cb23-8" aria-hidden="true" tabindex="-1"></a>s4m3<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">3</span>))</span>
+<span id="cb23-9"><a href="dose-response-model.html#cb23-9" aria-hidden="true" tabindex="-1"></a>s4m4<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">4</span>))</span>
+<span id="cb23-10"><a href="dose-response-model.html#cb23-10" aria-hidden="true" tabindex="-1"></a>s4m5<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">5</span>))</span>
+<span id="cb23-11"><a href="dose-response-model.html#cb23-11" aria-hidden="true" tabindex="-1"></a>s4m6<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">6</span>))</span>
+<span id="cb23-12"><a href="dose-response-model.html#cb23-12" aria-hidden="true" tabindex="-1"></a>s4m7<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">7</span>))</span>
+<span id="cb23-13"><a href="dose-response-model.html#cb23-13" aria-hidden="true" tabindex="-1"></a>s4m8<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">8</span>))</span>
+<span id="cb23-14"><a href="dose-response-model.html#cb23-14" aria-hidden="true" tabindex="-1"></a>s4m9<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp <span class="sc">~</span> <span class="fu">poly</span>(dose, <span class="dv">9</span>))</span>
+<span id="cb23-15"><a href="dose-response-model.html#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="dose-response-model.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s4m1, s4m2, s4m3, s4m4, s4m5, s4m6, s4m7, s4m8, s4m9)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: resp ~ poly(dose, 1)
+## Model 2: resp ~ poly(dose, 2)
+## Model 3: resp ~ poly(dose, 3)
+## Model 4: resp ~ poly(dose, 4)
+## Model 5: resp ~ poly(dose, 5)
+## Model 6: resp ~ poly(dose, 6)
+## Model 7: resp ~ poly(dose, 7)
+## Model 8: resp ~ poly(dose, 8)
+## Model 9: resp ~ poly(dose, 9)
+##   Res.Df     RSS Df Sum of Sq        F    Pr(&gt;F)    
+## 1    798 14.1986                                    
+## 2    797 10.4872  1    3.7114 354.1703 &lt; 2.2e-16 ***
+## 3    796  9.0810  1    1.4062 134.1909 &lt; 2.2e-16 ***
+## 4    795  8.3462  1    0.7348  70.1227 2.528e-16 ***
+## 5    794  8.3290  1    0.0171   1.6358   0.20128    
+## 6    793  8.2936  1    0.0354   3.3825   0.06627 .  
+## 7    792  8.2891  1    0.0045   0.4327   0.51084    
+## 8    791  8.2786  1    0.0105   1.0030   0.31689    
+## 9    790  8.2784  1    0.0001   0.0121   0.91226    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dose-response-model.html#cb25-1" aria-hidden="true" tabindex="-1"></a>s4pred5<span class="ot">&lt;-</span><span class="fu">predict</span>(s4m4)</span>
+<span id="cb25-2"><a href="dose-response-model.html#cb25-2" aria-hidden="true" tabindex="-1"></a>s4pred1<span class="ot">&lt;-</span><span class="fu">predict</span>(s4m1)</span>
+<span id="cb25-3"><a href="dose-response-model.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s4c<span class="sc">$</span>dose, s4pred5, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb25-4"><a href="dose-response-model.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s4c<span class="sc">$</span>dose, s4pred1, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb25-5"><a href="dose-response-model.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.5</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb25-6"><a href="dose-response-model.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.2</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb25-7"><a href="dose-response-model.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.8</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb25-8"><a href="dose-response-model.html#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="dose-response-model.html#cb25-9" aria-hidden="true" tabindex="-1"></a>s4c<span class="sc">$</span>dose[<span class="fu">which</span>(s4pred5 <span class="sc">&gt;</span><span class="fl">0.499</span> <span class="sc">&amp;</span> s4pred5 <span class="sc">&lt;</span><span class="fl">0.501</span>)]</span></code></pre></div>
+<pre><code>## [1] 5.06</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dose-response-model.html#cb27-1" aria-hidden="true" tabindex="-1"></a>s4c<span class="sc">$</span>dose[<span class="fu">which</span>(s4pred1 <span class="sc">&gt;</span><span class="fl">0.499</span> <span class="sc">&amp;</span> s4pred1 <span class="sc">&lt;</span><span class="fl">0.501</span>)]</span></code></pre></div>
+<pre><code>## [1] 4.83</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dose-response-model.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50=5.06&#39;</span>, <span class="at">x=</span><span class="dv">7</span>, <span class="at">y=</span><span class="fl">0.1</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb29-2"><a href="dose-response-model.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&#39;LD50=4.83&#39;</span>, <span class="at">x=</span><span class="dv">2</span>, <span class="at">y=</span><span class="fl">0.6</span>, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb29-3"><a href="dose-response-model.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="dose-response-model.html#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="dose-response-model.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">##########sigmoid function fitting</span></span>
+<span id="cb29-6"><a href="dose-response-model.html#cb29-6" aria-hidden="true" tabindex="-1"></a>sigmoid.f<span class="ot">=</span><span class="cf">function</span>(x) {</span>
+<span id="cb29-7"><a href="dose-response-model.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))</span>
+<span id="cb29-8"><a href="dose-response-model.html#cb29-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-9"><a href="dose-response-model.html#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="dose-response-model.html#cb29-10" aria-hidden="true" tabindex="-1"></a>sx<span class="ot">&lt;-</span><span class="fu">sigmoid.f</span>(s4c<span class="sc">$</span>dose)</span>
+<span id="cb29-11"><a href="dose-response-model.html#cb29-11" aria-hidden="true" tabindex="-1"></a>ss.f<span class="ot">=</span><span class="cf">function</span>(x){ <span class="fu">poly</span>(x,<span class="dv">5</span>)}</span>
+<span id="cb29-12"><a href="dose-response-model.html#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="dose-response-model.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#mod.sig &lt;-lm(data=s4c, resp~ss.f(dose))</span></span>
+<span id="cb29-14"><a href="dose-response-model.html#cb29-14" aria-hidden="true" tabindex="-1"></a>mod.sig <span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">data=</span>s4c, resp<span class="sc">~</span><span class="fu">sigmoid.f</span>(dose<span class="dv">-5</span>))</span>
+<span id="cb29-15"><a href="dose-response-model.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(s4m1, s4m2, s4m3, s4m4, s4m5,mod.sig)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: resp ~ poly(dose, 1)
+## Model 2: resp ~ poly(dose, 2)
+## Model 3: resp ~ poly(dose, 3)
+## Model 4: resp ~ poly(dose, 4)
+## Model 5: resp ~ poly(dose, 5)
+## Model 6: resp ~ sigmoid.f(dose - 5)
+##   Res.Df     RSS Df Sum of Sq        F    Pr(&gt;F)    
+## 1    798 14.1986                                    
+## 2    797 10.4872  1    3.7114 353.8002 &lt; 2.2e-16 ***
+## 3    796  9.0810  1    1.4062 134.0507 &lt; 2.2e-16 ***
+## 4    795  8.3462  1    0.7348  70.0495 2.597e-16 ***
+## 5    794  8.3290  1    0.0171   1.6341    0.2015    
+## 6    798  8.3370 -4   -0.0079   0.1884    0.9445    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dose-response-model.html#cb31-1" aria-hidden="true" tabindex="-1"></a>pred.sig<span class="ot">&lt;-</span><span class="fu">predict</span>(mod.sig)</span>
+<span id="cb31-2"><a href="dose-response-model.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s4c<span class="sc">$</span>dose, pred.sig, <span class="at">col=</span><span class="st">&#39;grey&#39;</span>, <span class="at">lwd=</span><span class="dv">20</span>)</span>
+<span id="cb31-3"><a href="dose-response-model.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s4c<span class="sc">$</span>dose, s4pred5, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb31-4"><a href="dose-response-model.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="dose-response-model.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="do">###### generalized additive model 실습</span></span>
+<span id="cb31-6"><a href="dose-response-model.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gam)</span></code></pre></div>
+<pre><code>## Loading required package: splines</code></pre>
+<pre><code>## Loading required package: foreach</code></pre>
+<pre><code>## Loaded gam 1.20</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dose-response-model.html#cb35-1" aria-hidden="true" tabindex="-1"></a>gam.m <span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="at">data=</span>s4c, resp<span class="sc">~</span><span class="fu">s</span>(dose, <span class="dv">20</span>))</span>
+<span id="cb35-2"><a href="dose-response-model.html#cb35-2" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">&lt;-</span><span class="fu">predict</span>(gam.m)</span>
+<span id="cb35-3"><a href="dose-response-model.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="dose-response-model.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(s4c<span class="sc">$</span>dose, gg, <span class="at">col=</span><span class="st">&#39;purple&#39;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dose-response-model.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################</span></span>
+<span id="cb36-2"><a href="dose-response-model.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary ###########################3333</span></span>
+<span id="cb36-3"><a href="dose-response-model.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Take home message ####################</span></span>
+<span id="cb36-4"><a href="dose-response-model.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. high dose exposure cohort: there might be no dose-response relationship (high SMR but no linear relationship)</span></span>
+<span id="cb36-5"><a href="dose-response-model.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#2. moderate dose exposure cohort: there were dose-response relationship, healthy worker effect could attenuate those relationship</span></span>
+<span id="cb36-6"><a href="dose-response-model.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#3. all dose exposure cohort: there were dose-response relationship, and can control healthy worker effect</span></span>
+<span id="cb36-7"><a href="dose-response-model.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                             Over or Underestimation of LD50 can be occured during model selection steps.</span></span>
+<span id="cb36-8"><a href="dose-response-model.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                             Best model is not reperesentor of real world, because data generally squared by health worker effect.</span></span>
+<span id="cb36-9"><a href="dose-response-model.html#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="dose-response-model.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="do">######### 변수들을 조정에 자유도를 높여보자. </span></span>
+<span id="cb36-11"><a href="dose-response-model.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#customized function...</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="claim-rate-proportional-rate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nested-case-control-study.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["methods.pdf", "methods.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

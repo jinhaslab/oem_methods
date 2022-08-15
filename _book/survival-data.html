@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Survival Data | 직업환경보건 연구방법론</title>
+  <meta name="description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Survival Data | 직업환경보건 연구방법론" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Survival Data | 직업환경보건 연구방법론" />
+  
+  <meta name="twitter:description" content="직업환경보건연구에 필요한 연구방법론 정리." />
+  
+
+<meta name="author" content="윤진하" />
+
+
+<meta name="date" content="2021-12-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tsregression.html"/>
+<link rel="next" href="mixed.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 소개</a></li>
+<li class="chapter" data-level="2" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html"><i class="fa fa-check"></i><b>2</b> 직업병 연구방법론 개론</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="직업병-연구방법론-개론.html"><a href="직업병-연구방법론-개론.html#보건학-우선순위"><i class="fa fa-check"></i><b>2.1</b> 보건학 우선순위</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html"><i class="fa fa-check"></i><b>3</b> Claim Rate &amp; Proportional Rate</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim"><i class="fa fa-check"></i><b>3.1</b> 승인률</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-표준화"><i class="fa fa-check"></i><b>3.1.1</b> 데이터 표준화</a></li>
+<li class="chapter" data-level="3.1.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최근-5년-산재-신청-건수-및-승인률"><i class="fa fa-check"></i><b>3.1.2</b> 최근 5년 산재 신청 건수 및 승인률</a></li>
+<li class="chapter" data-level="3.1.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암-승인률"><i class="fa fa-check"></i><b>3.1.3</b> 암 승인률</a></li>
+<li class="chapter" data-level="3.1.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#암종별-승인률"><i class="fa fa-check"></i><b>3.1.4</b> 암종별 승인률</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#claim2"><i class="fa fa-check"></i><b>3.2</b> 신청률</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-불러오기"><i class="fa fa-check"></i><b>3.2.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="3.2.2" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-표준화"><i class="fa fa-check"></i><b>3.2.2</b> 질병 표준화</a></li>
+<li class="chapter" data-level="3.2.3" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-표준화"><i class="fa fa-check"></i><b>3.2.3</b> 업종 표준화</a></li>
+<li class="chapter" data-level="3.2.4" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병업종-점수화-10점-만점"><i class="fa fa-check"></i><b>3.2.4</b> 질병/업종 점수화 (10점 만점)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비-claim-rate-ratio"><i class="fa fa-check"></i><b>3.2.5</b> 신청률비 (claim rate ratio)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비-proportional-claim-ratio"><i class="fa fa-check"></i><b>3.2.6</b> 비례신청비 (Proportional claim ratio)</a></li>
+<li class="chapter" data-level="3.2.7" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#통합-데이터-산출"><i class="fa fa-check"></i><b>3.2.7</b> 통합 데이터 산출</a></li>
+<li class="chapter" data-level="3.2.8" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#데이터-저장"><i class="fa fa-check"></i><b>3.2.8</b> 데이터 저장</a></li>
+<li class="chapter" data-level="3.2.9" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-점수"><i class="fa fa-check"></i><b>3.2.9</b> 업종 점수</a></li>
+<li class="chapter" data-level="3.2.10" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병-점수"><i class="fa fa-check"></i><b>3.2.10</b> 질병 점수</a></li>
+<li class="chapter" data-level="3.2.11" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-x-질병-조합-점수"><i class="fa fa-check"></i><b>3.2.11</b> 업종 X 질병 조합 점수</a></li>
+<li class="chapter" data-level="3.2.12" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#신청률비"><i class="fa fa-check"></i><b>3.2.12</b> 신청률비</a></li>
+<li class="chapter" data-level="3.2.13" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#비례신청비"><i class="fa fa-check"></i><b>3.2.13</b> 비례신청비</a></li>
+<li class="chapter" data-level="3.2.14" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-점수"><i class="fa fa-check"></i><b>3.2.14</b> 최종 점수</a></li>
+<li class="chapter" data-level="3.2.15" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선순위-집단"><i class="fa fa-check"></i><b>3.2.15</b> 우선순위 집단</a></li>
+<li class="chapter" data-level="3.2.16" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#우선-순위-집단별-관찰"><i class="fa fa-check"></i><b>3.2.16</b> 우선 순위 집단별 관찰</a></li>
+<li class="chapter" data-level="3.2.17" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질적-우선순위-고려"><i class="fa fa-check"></i><b>3.2.17</b> 질적 우선순위 고려</a></li>
+<li class="chapter" data-level="3.2.18" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#질병군-제외"><i class="fa fa-check"></i><b>3.2.18</b> 질병군 제외</a></li>
+<li class="chapter" data-level="3.2.19" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#최종-우선-순위-점수"><i class="fa fa-check"></i><b>3.2.19</b> 최종 우선 순위 점수</a></li>
+<li class="chapter" data-level="3.2.20" data-path="claim-rate-proportional-rate.html"><a href="claim-rate-proportional-rate.html#업종-대분류별-우선순위"><i class="fa fa-check"></i><b>3.2.20</b> 업종 대분류별 우선순위</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="DRM.html"><a href="DRM.html"><i class="fa fa-check"></i><b>4</b> Dose Response Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="DRM.html"><a href="DRM.html#exposure-dose-and-health"><i class="fa fa-check"></i><b>4.1</b> Exposure (Dose) and Health</a></li>
+<li class="chapter" data-level="4.2" data-path="DRM.html"><a href="DRM.html#실습-1-질병-그림-그리기"><i class="fa fa-check"></i><b>4.2</b> 실습 1: 질병 그림 그리기</a></li>
+<li class="chapter" data-level="4.3" data-path="DRM.html"><a href="DRM.html#지역사회-연구-community-base-cohort-study"><i class="fa fa-check"></i><b>4.3</b> 지역사회 연구 (community base cohort study)</a></li>
+<li class="chapter" data-level="4.4" data-path="DRM.html"><a href="DRM.html#모형-차이-sigmoid-curve-vs-linear-regression"><i class="fa fa-check"></i><b>4.4</b> 모형 차이: sigmoid curve vs linear regression</a></li>
+<li class="chapter" data-level="4.5" data-path="DRM.html"><a href="DRM.html#코호트-특성에-따른-상황"><i class="fa fa-check"></i><b>4.5</b> 코호트 특성에 따른 상황</a></li>
+<li class="chapter" data-level="4.6" data-path="DRM.html"><a href="DRM.html#코호트-특성에-따른-상황과-이론적-모델"><i class="fa fa-check"></i><b>4.6</b> 코호트 특성에 따른 상황과 이론적 모델</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="DRM.html"><a href="DRM.html#take-home-message"><i class="fa fa-check"></i><b>4.6.1</b> Take home message</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="DRM.html"><a href="DRM.html#threshold-찾기-change-point-찾기"><i class="fa fa-check"></i><b>4.7</b> Threshold 찾기 (change point 찾기)</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="DRM.html"><a href="DRM.html#자료-생성"><i class="fa fa-check"></i><b>4.7.1</b> 자료 생성</a></li>
+<li class="chapter" data-level="4.7.2" data-path="DRM.html"><a href="DRM.html#가상의-threshold-값-수행해보기"><i class="fa fa-check"></i><b>4.7.2</b> 가상의 threshold 값 수행해보기</a></li>
+<li class="chapter" data-level="4.7.3" data-path="DRM.html"><a href="DRM.html#과제"><i class="fa fa-check"></i><b>4.7.3</b> 과제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html"><i class="fa fa-check"></i><b>5</b> Nested Case Control Study</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#simple-tutor-for-nested-case-control-ncc-study"><i class="fa fa-check"></i><b>5.1</b> simple tutor for nested case control (NCC) study</a></li>
+<li class="chapter" data-level="5.2" data-path="nested-case-control-study.html"><a href="nested-case-control-study.html#sampling-schemes-for-nested-case-control-studies"><i class="fa fa-check"></i><b>5.2</b> Sampling schemes for nested case-control studies</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tsregression.html"><a href="tsregression.html"><i class="fa fa-check"></i><b>6</b> Time series data analysis, regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tsregression.html"><a href="tsregression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="tsregression.html"><a href="tsregression.html#a-case-study-in-air-pollution-and-health"><i class="fa fa-check"></i><b>6.2</b> A case study in Air Pollution and Health</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tsregression.html"><a href="tsregression.html#starting-up"><i class="fa fa-check"></i><b>6.2.1</b> Starting Up</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tsregression.html"><a href="tsregression.html#statistical-issues-in-estimating-the-health-effects-of-spatialtemporal-environmental-exposures"><i class="fa fa-check"></i><b>6.2.2</b> Statistical Issues in Estimating the Health Effects of Spatial–Temporal Environmental Exposures</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tsregression.html"><a href="tsregression.html#simulation-study-for-pm10-and-cvd-mortality"><i class="fa fa-check"></i><b>6.3</b> simulation study for pm10 and cvd mortality</a></li>
+<li class="chapter" data-level="6.4" data-path="tsregression.html"><a href="tsregression.html#case-study-influenza-epidemic-and-suicide"><i class="fa fa-check"></i><b>6.4</b> case study: influenza epidemic and suicide</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tsregression.html"><a href="tsregression.html#실습-데이터"><i class="fa fa-check"></i><b>6.4.1</b> 실습 데이터</a></li>
+<li class="chapter" data-level="6.4.2" data-path="tsregression.html"><a href="tsregression.html#simple-time-related-variable-adjusting-regression"><i class="fa fa-check"></i><b>6.4.2</b> simple time-related variable adjusting regression</a></li>
+<li class="chapter" data-level="6.4.3" data-path="tsregression.html"><a href="tsregression.html#arima"><i class="fa fa-check"></i><b>6.4.3</b> ARIMA</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tsregression.html"><a href="tsregression.html#analysis-and-forecasting-regression"><i class="fa fa-check"></i><b>6.5</b> analysis and forecasting, regression</a></li>
+<li class="chapter" data-level="6.6" data-path="tsregression.html"><a href="tsregression.html#arima-1"><i class="fa fa-check"></i><b>6.6</b> ARIMA</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="tsregression.html"><a href="tsregression.html#arima-감기-자살-aic"><i class="fa fa-check"></i><b>6.6.1</b> arima 감기 자살 , AIC</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="tsregression.html"><a href="tsregression.html#aic-bic-in-generalize-additive-model"><i class="fa fa-check"></i><b>6.7</b> AIC BIC in generalize additive model</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="survival-data.html"><a href="survival-data.html"><i class="fa fa-check"></i><b>7</b> Survival Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="survival-data.html"><a href="survival-data.html#cox-proportional"><i class="fa fa-check"></i><b>7.1</b> Cox Proportional</a></li>
+<li class="chapter" data-level="7.2" data-path="survival-data.html"><a href="survival-data.html#non-proportional-model"><i class="fa fa-check"></i><b>7.2</b> non-proportional model</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="survival-data.html"><a href="survival-data.html#log-rank-test"><i class="fa fa-check"></i><b>7.2.1</b> log-rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="survival-data.html"><a href="survival-data.html#spline-terms-in-a-cox-model"><i class="fa fa-check"></i><b>7.3</b> Spline Terms in a Cox model</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Model</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mixed.html"><a href="mixed.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="mixed.html"><a href="mixed.html#data-step-1"><i class="fa fa-check"></i><b>8.2</b> data step 1</a></li>
+<li class="chapter" data-level="8.3" data-path="mixed.html"><a href="mixed.html#load-data-of-int-and-korea"><i class="fa fa-check"></i><b>8.3</b> load data of Int and Korea</a></li>
+<li class="chapter" data-level="8.4" data-path="mixed.html"><a href="mixed.html#data-merge"><i class="fa fa-check"></i><b>8.4</b> data merge</a></li>
+<li class="chapter" data-level="8.5" data-path="mixed.html"><a href="mixed.html#data-analysis-start"><i class="fa fa-check"></i><b>8.5</b> Data analysis start</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="mixed.html"><a href="mixed.html#job-loss-due-to-covid19-psychological-aggravation-according-to-gender"><i class="fa fa-check"></i><b>8.5.1</b> job loss due to COVID19, psychological aggravation according to Gender</a></li>
+<li class="chapter" data-level="8.5.2" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-age-group"><i class="fa fa-check"></i><b>8.5.2</b> job loss, psychological aggravation according to age group</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="mixed.html"><a href="mixed.html#job-loss-psychological-aggravation-according-to-education-level"><i class="fa fa-check"></i><b>8.6</b> job loss, psychological aggravation according to Education level</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="mixed.html"><a href="mixed.html#depression-status-according-job-loss-status"><i class="fa fa-check"></i><b>8.6.1</b> Depression status according job loss status</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="mixed.html"><a href="mixed.html#association"><i class="fa fa-check"></i><b>8.7</b> association</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="mixed.html"><a href="mixed.html#mixed-model"><i class="fa fa-check"></i><b>8.7.1</b> mixed model</a></li>
+<li class="chapter" data-level="8.7.2" data-path="mixed.html"><a href="mixed.html#mixed-model-with-human-develop-index-stratification"><i class="fa fa-check"></i><b>8.7.2</b> mixed model with human develop index stratification</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="iptw.html"><a href="iptw.html"><i class="fa fa-check"></i><b>9</b> IPTW</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="iptw.html"><a href="iptw.html#package-tutorial"><i class="fa fa-check"></i><b>9.1</b> package tutorial</a></li>
+<li class="chapter" data-level="9.2" data-path="iptw.html"><a href="iptw.html#case-study-of-noise-exposure-and-hypertension"><i class="fa fa-check"></i><b>9.2</b> case study of noise exposure and hypertension</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>10</b> simulation</a></li>
+<li class="chapter" data-level="11" data-path="meta-analysis-in-occupational-health.html"><a href="meta-analysis-in-occupational-health.html"><i class="fa fa-check"></i><b>11</b> meta-analysis in occupational health</a></li>
+<li class="chapter" data-level="12" data-path="jobstress.html"><a href="jobstress.html"><i class="fa fa-check"></i><b>12</b> job stress questionnaires</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="jobstress.html"><a href="jobstress.html#설문지-개발"><i class="fa fa-check"></i><b>12.1</b> 설문지 개발</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="jobstress.html"><a href="jobstress.html#기본-r-준비"><i class="fa fa-check"></i><b>12.1.1</b> 기본 R 준비</a></li>
+<li class="chapter" data-level="12.1.2" data-path="jobstress.html"><a href="jobstress.html#basic-data-step"><i class="fa fa-check"></i><b>12.1.2</b> basic data step</a></li>
+<li class="chapter" data-level="12.1.3" data-path="jobstress.html"><a href="jobstress.html#설문지와-데이터-비교하기"><i class="fa fa-check"></i><b>12.1.3</b> 설문지와 데이터 비교하기</a></li>
+<li class="chapter" data-level="12.1.4" data-path="jobstress.html"><a href="jobstress.html#변수에-라벨링-붙이기"><i class="fa fa-check"></i><b>12.1.4</b> 변수에 라벨링 붙이기</a></li>
+<li class="chapter" data-level="12.1.5" data-path="jobstress.html"><a href="jobstress.html#결측값-제거"><i class="fa fa-check"></i><b>12.1.5</b> 결측값 제거</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="jobstress.html"><a href="jobstress.html#주성분분석"><i class="fa fa-check"></i><b>12.2</b> 주성분분석</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="jobstress.html"><a href="jobstress.html#주성분분석-간단-소개"><i class="fa fa-check"></i><b>12.2.1</b> 주성분분석 간단 소개</a></li>
+<li class="chapter" data-level="12.2.2" data-path="jobstress.html"><a href="jobstress.html#요인이-몇개면-좋을까"><i class="fa fa-check"></i><b>12.2.2</b> 요인이 몇개면 좋을까?</a></li>
+<li class="chapter" data-level="12.2.3" data-path="jobstress.html"><a href="jobstress.html#요인-고정-분석"><i class="fa fa-check"></i><b>12.2.3</b> 요인 고정 분석</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="jobstress.html"><a href="jobstress.html#요인-개수-정하기-신뢰도-측면"><i class="fa fa-check"></i><b>12.3</b> 요인 개수 정하기: 신뢰도 측면</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="jobstress.html"><a href="jobstress.html#신뢰도-값-cronbach-alpha"><i class="fa fa-check"></i><b>12.3.1</b> 신뢰도 값 (Cronbach alpha)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="jobstress.html"><a href="jobstress.html#요인값-활용하기"><i class="fa fa-check"></i><b>12.4</b> 요인값 활용하기</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="jobstress.html"><a href="jobstress.html#요인값-데이터화"><i class="fa fa-check"></i><b>12.4.1</b> 요인값 데이터화</a></li>
+<li class="chapter" data-level="12.4.2" data-path="jobstress.html"><a href="jobstress.html#우울증-점수-phq-9"><i class="fa fa-check"></i><b>12.4.2</b> 우울증 점수 (PHQ-9)</a></li>
+<li class="chapter" data-level="12.4.3" data-path="jobstress.html"><a href="jobstress.html#요인별-사용-방법"><i class="fa fa-check"></i><b>12.4.3</b> 요인별 사용 방법</a></li>
+<li class="chapter" data-level="12.4.4" data-path="jobstress.html"><a href="jobstress.html#과제-소진-증후군과-감정노동"><i class="fa fa-check"></i><b>12.4.4</b> 과제: 소진 증후군과 감정노동</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="jobstress.html"><a href="jobstress.html#mediation"><i class="fa fa-check"></i><b>12.5</b> Indirect effect</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ml-example-for-public-health.html"><a href="ml-example-for-public-health.html"><i class="fa fa-check"></i><b>13</b> ML example for public health</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="ml-example-for-public-health.html"><a href="ml-example-for-public-health.html#정리된-자료로-회귀-분석-수행"><i class="fa fa-check"></i><b>13.1</b> 정리된 자료로 회귀 분석 수행</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="smr.html"><a href="smr.html"><i class="fa fa-check"></i><b>14</b> 산업보건분야에서 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="smr.html"><a href="smr.html#빅데이터-위원회"><i class="fa fa-check"></i><b>14.1</b> 빅데이터 위원회</a></li>
+<li class="chapter" data-level="14.2" data-path="smr.html"><a href="smr.html#직업환경분야-건강보험공단-자료-분석"><i class="fa fa-check"></i><b>14.2</b> 직업환경분야 건강보험공단 자료 분석</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="smr.html"><a href="smr.html#건강보험공단-자료-및-사용"><i class="fa fa-check"></i><b>14.2.1</b> 건강보험공단 자료 및 사용</a></li>
+<li class="chapter" data-level="14.2.2" data-path="smr.html"><a href="smr.html#건강보험공단-자료-분석-방법"><i class="fa fa-check"></i><b>14.2.2</b> 건강보험공단 자료 분석 방법</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html"><i class="fa fa-check"></i><b>15</b> Writing Scientific Manuscript for Occupational Health</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문을-작성하는-10가지-과정"><i class="fa fa-check"></i><b>15.1</b> 논문을 작성하는 10가지 과정</a></li>
+<li class="chapter" data-level="15.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#각-단계별-세부-목표"><i class="fa fa-check"></i><b>15.2</b> 각 단계별 세부 목표</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#연구-주제-선정"><i class="fa fa-check"></i><b>15.2.1</b> 연구 주제 선정</a></li>
+<li class="chapter" data-level="15.2.2" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#선행-연구-조사"><i class="fa fa-check"></i><b>15.2.2</b> 선행 연구 조사</a></li>
+<li class="chapter" data-level="15.2.3" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#가설-설정"><i class="fa fa-check"></i><b>15.2.3</b> 가설 설정</a></li>
+<li class="chapter" data-level="15.2.4" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문계획서-작성-irb-신청"><i class="fa fa-check"></i><b>15.2.4</b> 논문계획서 작성, IRB 신청</a></li>
+<li class="chapter" data-level="15.2.5" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-수집-변수-정의"><i class="fa fa-check"></i><b>15.2.5</b> 데이터 수집 (변수 정의)</a></li>
+<li class="chapter" data-level="15.2.6" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#데이터-분석"><i class="fa fa-check"></i><b>15.2.6</b> 데이터 분석</a></li>
+<li class="chapter" data-level="15.2.7" data-path="writing-scientific-manuscript-for-occupational-health.html"><a href="writing-scientific-manuscript-for-occupational-health.html#논문작성"><i class="fa fa-check"></i><b>15.2.7</b> 논문작성</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">직업환경보건 연구방법론</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="survival-data" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Survival Data</h1>
+<div id="cox-proportional" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Cox Proportional</h2>
+</div>
+<div id="non-proportional-model" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> non-proportional model</h2>
+<div id="log-rank-test" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> log-rank test</h3>
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5898500/pdf/main.pdf" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5898500/pdf/main.pdf</a></p>
+<p>log-rank test has been the one of the most commonly used methods for non-proportional hazard model. The weighted log-rank test allow different weight assignment to time points and thererfore is able to empasize certain portion of the survivla curves.</p>
+</div>
+</div>
+<div id="spline-terms-in-a-cox-model" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Spline Terms in a Cox model</h2>
+<p>(ref: <a href="https://cran.r-project.org/web/packages/survival/vignettes/splines.pdf" class="uri">https://cran.r-project.org/web/packages/survival/vignettes/splines.pdf</a>)</p>
+<p>Cox 모형에서 비선형 관계를 표현하는 것을 실습하겠습니다. <br> 상기 <a href="https://cran.r-project.org/web/packages/survival/vignettes/splines.pdf">reference</a>를 한글로 정리하고, 몇가지 visualization을 수정한 것입니다.</p>
+<blockquote>
+<p>기초 분석</p>
+</blockquote>
+<p>Survival package 에서 MGUS 데이터를 이용해 실습하겠습니다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="survival-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(survival)) <span class="fu">install.packages</span>(<span class="st">&#39;survival&#39;</span>)</span>
+<span id="cb1-2"><a href="survival-data.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(tidyverse)) <span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb1-3"><a href="survival-data.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)) <span class="fu">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
+<p>실습한 데이터를 살펴 보겠습니다. <a href="https://stat.ethz.ch/R-manual/R-devel/library/survival/html/mgus.html">MGUS</a> 데이터를 이용하겠습니다. MGUS는 monoclonal gammopathy of undetermined significance 에 대한 241명의 자료입니다. 각 변수는 아래와 같습니다.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>변수</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>subject id</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>age in years at the detection of MGUS</td>
+</tr>
+<tr class="odd">
+<td>sex</td>
+<td>male or female</td>
+</tr>
+<tr class="even">
+<td>dxyr</td>
+<td>year of diagnosis</td>
+</tr>
+<tr class="odd">
+<td>pcdx</td>
+<td>for subjects who progress to a plasma cell malignancy, the subtype of malignancy</td>
+</tr>
+<tr class="even">
+<td>pctime</td>
+<td>days from MGUS until diagnosis of a plasma cell malignancy</td>
+</tr>
+<tr class="odd">
+<td>futime</td>
+<td>days from diagnosis to last follow-up</td>
+</tr>
+<tr class="even">
+<td>death</td>
+<td>1= follow-up is until death</td>
+</tr>
+<tr class="odd">
+<td>alb</td>
+<td>albumin level at MGUS diagnosis</td>
+</tr>
+<tr class="even">
+<td>creat</td>
+<td>creatinine at MGUS diagnosis</td>
+</tr>
+<tr class="odd">
+<td>hgb</td>
+<td>hemoglobin at MGUS diagnosis</td>
+</tr>
+<tr class="even">
+<td>mspike</td>
+<td>size of the monoclonal protein spike at diagnosis</td>
+</tr>
+<tr class="odd">
+<td>mgus1</td>
+<td>The same data set in start,stop format. Contains the id, age, sex, and laboratory variable described above along with</td>
+</tr>
+<tr class="even">
+<td>start, stop</td>
+<td>sequential intervals of time for each subject</td>
+</tr>
+<tr class="odd">
+<td>status</td>
+<td>=1 if the interval ends in an event</td>
+</tr>
+<tr class="even">
+<td>event</td>
+<td>a factor containing the event type of censor, death, or plasma cell malignancy</td>
+</tr>
+<tr class="odd">
+<td>enum</td>
+<td>event number for each subject is 1 or 2</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="survival-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(mgus)</span></code></pre></div>
+<div id="htmlwidget-5fce2219feec7c34926f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5fce2219feec7c34926f">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241],[78,73,87,86,74,81,72,79,85,58,79,78,83,66,80,57,54,71,72,59,72,62,68,77,69,75,72,62,74,76,55,73,60,62,58,64,66,55,76,73,76,68,60,70,66,66,81,61,80,73,66,77,46,59,58,58,54,64,73,68,77,73,44,84,48,69,59,58,67,61,50,48,72,52,59,58,65,56,74,78,58,76,50,50,77,70,51,78,43,59,56,56,55,55,61,58,75,54,63,76,34,46,71,53,53,60,63,63,53,87,50,54,58,55,58,68,49,65,70,80,69,49,51,69,66,48,54,65,72,85,64,66,86,59,51,85,34,71,35,55,90,66,63,61,50,52,74,66,47,68,77,75,73,58,59,63,82,64,64,65,70,71,36,41,53,62,55,51,50,49,62,66,80,68,75,53,47,70,47,50,74,80,60,72,64,38,56,63,37,40,59,48,56,50,70,57,55,58,54,74,62,61,55,52,46,65,59,68,47,62,79,64,77,76,64,70,51,57,50,58,75,53,82,54,52,72,39,75,64,66,68,61,62,47,51,66,62,38,39,67,55],["female","female","male","male","female","male","female","female","female","male","male","male","male","male","male","female","female","male","female","female","male","female","male","female","female","male","female","female","female","female","male","female","male","female","male","female","female","female","male","female","female","female","female","male","male","male","male","female","female","female","female","male","female","female","female","male","male","male","male","male","male","female","female","male","male","male","female","female","female","male","female","male","male","male","male","male","male","female","male","male","male","female","male","female","male","female","female","female","female","male","male","female","male","male","male","male","female","male","male","male","male","male","female","female","female","male","male","male","female","male","female","male","male","female","female","male","female","female","female","male","male","female","female","male","female","female","female","male","female","male","female","male","male","female","female","male","female","male","female","male","male","male","male","female","female","female","female","female","female","male","male","male","male","female","male","male","male","male","female","male","male","female","male","female","female","male","female","male","male","female","male","male","male","female","male","female","female","female","female","female","male","male","female","male","male","male","male","male","female","male","male","male","male","male","female","male","male","male","male","female","female","male","male","female","male","male","male","male","female","male","male","male","female","male","female","male","female","female","male","male","female","male","female","male","male","male","male","male","male","male","male","male","male","female","female","male","male","male","male","female","male"],[68,66,68,69,68,68,68,69,70,65,62,68,64,69,69,66,68,67,69,70,59,67,69,70,69,70,65,69,70,66,61,73,64,72,68,70,63,63,69,70,70,63,66,69,67,65,67,67,70,65,66,70,70,67,60,70,63,66,60,70,70,70,67,63,67,68,69,59,70,70,66,70,70,69,70,66,70,66,66,68,68,68,65,66,64,70,70,70,60,70,56,59,70,67,69,64,70,62,64,68,62,58,70,65,70,66,70,70,69,70,59,68,59,60,67,60,65,68,61,69,70,70,62,62,70,62,62,68,69,64,67,69,69,63,63,69,71,70,68,64,68,70,70,64,65,65,70,67,65,68,69,66,66,66,64,66,69,66,69,67,69,67,67,67,67,67,67,67,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,67,68,68,69,69,69,69,69,67,68,69,69,69,69,69,69,69,69,69,69,69,67,69,70,70,70,69,70,70,70,70,70,70,70,70,70,70,70,69,70,68,70,70,70,70,70,70,70,71,69,70,67,68,64,69,69,66],[null,"LP",null,null,null,null,null,null,null,null,null,null,null,null,null,"AM","MM",null,"MM","AM","MM","MM",null,null,null,null,null,null,null,"MM","MA","MM",null,"MM",null,null,null,"MM",null,null,null,"MM",null,null,"MM",null,null,null,null,null,null,null,null,"LP","MM",null,null,"MM","MM",null,null,null,null,null,"MM",null,null,"MM",null,null,"MM",null,null,"MM",null,null,"AM",null,null,null,"MM",null,"MM",null,null,null,"LP",null,null,null,null,null,null,null,"MM","MM",null,null,null,null,"MM","MA",null,"MM","LP",null,null,null,"MM",null,"AM",null,null,"MA",null,null,null,null,null,null,null,null,null,"AM","AM",null,null,null,null,null,null,null,null,"LP",null,null,null,null,"MM",null,null,null,null,null,null,null,null,null,null,null,null,null,null,"MM",null,null,null,null,"MM","MM",null,null,null,"MM",null,"MM","MM","MA",null,"MM",null,null,null,null,null,"MM","MM",null,null,null,null,null,null,null,null,"MM",null,"MM",null,null,"AM",null,null,"MM","MM",null,null,"MM","MM",null,null,null,null,null,null,null,null,null,null,null,"MA",null,null,null,null,null,"MM",null,null,"MM",null,null,null,null,null,null,null,null,null,null,null,null,"MM",null,null,"MM","MA",null,"AM",null,"MA"],[null,1310,null,null,null,null,null,null,null,null,null,null,null,null,null,6126,3585,null,5925,6778,3561,3991,null,null,null,null,null,null,null,4791,5945,700,null,954,null,null,null,9510,null,null,null,2618,null,null,4198,null,null,null,null,null,null,null,null,2618,10359,null,null,1795,4139,null,null,null,null,null,2953,null,null,7519,null,null,1642,null,null,4534,null,null,2106,null,null,null,3790,null,2314,null,null,null,3817,null,null,null,null,null,null,null,1826,3805,null,null,null,null,365,4957,null,3346,6804,null,null,null,4228,null,3386,null,null,5692,null,null,null,null,null,null,null,null,null,4912,2216,null,null,null,null,null,null,null,null,2912,null,null,null,null,11354,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1249,null,null,null,null,4626,2070,null,null,null,11685,null,3913,6970,2861,null,9723,null,null,null,null,null,8943,8948,null,null,null,null,null,null,null,null,10109,null,2185,null,null,2556,null,null,4311,7545,null,null,5222,2797,null,null,null,null,null,null,null,null,null,null,null,1431,null,null,null,null,null,1400,null,null,2557,null,null,null,null,null,null,null,null,null,null,null,null,1218,null,null,2908,2521,null,2961,null,3766],[748,6751,277,1815,2587,563,1135,2016,2422,6155,1767,61,60,8918,8309,7921,5231,5392,6415,6778,4505,4726,5550,5216,5757,2339,6931,6760,5796,5143,6166,1706,5127,2476,1711,11865,1857,9603,31,8552,2006,2970,13152,3924,5293,283,2223,4249,5308,8327,499,5779,11719,2651,10852,362,12931,3562,4826,4961,547,4133,13019,1674,3786,1369,8421,9318,4370,7817,4169,9618,6132,7235,6727,7428,4071,1673,2865,6,4807,4206,4065,10164,6143,533,12016,2815,8806,9019,14111,8600,11506,2445,2403,4901,370,6642,3318,3012,2223,5982,652,4996,9081,9978,5024,2833,5238,3186,3386,8978,1766,8059,6008,5047,2236,8529,4230,2844,6256,11892,3560,4946,3062,152,12618,3226,3958,531,11861,845,2099,8055,10504,7,11498,7928,12726,809,153,1851,3010,2121,7085,5084,7246,5930,6147,9607,791,6626,3962,1255,11030,1077,566,174,5022,3021,1625,6607,12689,11709,1005,4246,11425,9818,3227,11340,9953,39,2451,518,4758,9267,9101,4453,6349,12140,1392,3167,6025,4656,1783,11936,2678,3658,12349,12313,3511,8973,809,5151,7576,32,9085,7106,10410,3014,8002,5354,2989,12319,6089,8697,6479,1781,5917,779,1434,4763,2910,6209,5824,2400,3027,8856,9408,3855,61,9304,1492,11395,8264,5181,11864,3448,10770,2434,6763,11801,1589,12349,9760,5988,5260,14325,2961,4550,6524],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1,0,1,1,1,0,1,1,1],[2.8,null,2.2,2.8,3,2.9,3,3.1,3.2,3.5,3.7,2.1,2.7,3.2,3.1,3.4,3,3.2,3.1,3.5,2.8,2.8,3,3,3.1,3.7,3.5,3,4,3.3,null,3.3,null,3.8,3.4,3.7,3.3,3.8,2.6,3.3,3.3,3.6,3.2,2.6,3.5,3.4,2.2,3.7,3.5,3.3,3.3,3.5,4.3,3,3.3,3.6,3.6,3.2,3.3,null,null,3.8,3.4,3.6,null,3.3,3,null,null,2.9,3.2,3.7,3.9,3.6,3.6,3.6,3.6,3.1,3.1,2.5,2.1,3.2,3.5,3.4,3.1,2.9,null,3.9,3.2,3.3,3.8,3.4,3.9,3.5,2.9,3.7,2.7,3.2,3.2,3,3.7,2.3,3.1,2.8,3.4,3.7,3.3,3.4,3.4,2.7,3.3,3.5,2.6,null,null,3.8,3.5,null,null,2.3,3.3,null,2.8,2.4,3.4,3.6,3.3,3,3,2.4,2.6,1.9,2.1,3.9,3.3,3,null,3.4,3.5,3,2.7,4.5,3.7,null,1.8,null,2.6,3.2,3.1,3.1,2.4,2.9,2.7,3.1,null,3,2.3,3.3,2.9,3.5,3.4,3.1,3.7,3.5,3.4,3.1,3.1,null,3.2,3,3.1,3.2,3.2,2.8,2.8,3.3,3,null,2.4,2.7,3.3,2.9,3.3,3,null,3.9,2.8,3.1,2.6,3.6,2.9,3.2,null,5.1,2.2,2.6,2.7,2.9,2.9,3.3,3.1,3.2,2.8,3.2,3.1,null,3.5,2.1,2.7,3.8,null,3.9,3.9,3.6,3.6,2.9,3.1,3.7,null,3.7,2.7,3.4,null,3.3,null,3.9,3.8,3.3,null,3.9,3.4,3.4,3.9,3.4,null,4.1,null,3.8,null,3.5,3.2],[1.2,null,1.1,1.3,0.8,0.9,0.8,0.8,1,1,null,2,null,1.3,null,0.8,1.1,0.9,1.2,0.8,1.4,0.9,1,0.8,0.9,0.9,0.8,1.1,0.9,0.7,null,0.7,null,0.7,0.9,null,null,0.8,1.1,0.9,0.9,1,null,1.1,1.2,null,0.6,1.7,0.8,0.8,null,1.6,0.8,0.8,0.8,1,1.2,1,1.3,1,1.5,1,0.8,1.1,null,1,2.6,1.1,0.9,0.9,0.7,0.7,null,1.1,0.7,0.9,1,0.8,1.5,1.5,0.9,1.2,null,0.8,1.2,0.7,0.8,1,null,1.7,1.1,null,1,1,1.2,null,0.9,0.9,1.1,1.2,1.1,null,6.4,0.7,1.1,1.1,0.9,1,1,0.9,1.1,1,null,null,1,null,1.1,null,null,null,1.1,0.9,0.6,null,0.9,null,null,0.9,0.8,null,1.1,0.8,1,0.8,1,1,0.9,0.9,0.9,3.5,null,0.9,1.2,1.7,1.3,0.6,1,1.1,1.4,1.2,1.2,null,null,null,null,null,3.6,null,1,null,3.7,null,0.9,null,0.7,1.3,0.8,1.1,null,0.9,1.1,1.1,null,0.9,0.9,0.9,1,0.8,0.7,0.9,1.1,1.2,1.2,1,null,1.1,0.9,1.1,1,1.1,0.9,1,1,1.3,0.8,2.5,0.9,1.3,1,0.9,0.8,0.9,1.2,0.7,0.9,1,1.1,1.1,0.7,1.2,1.1,0.9,0.8,0.9,1.2,1.2,0.9,0.8,1.3,1,1.3,1,0.9,1,1,1,null,1.5,0.9,1.4,1,1.1,0.9,0.7,0.6,null,1.3,1.4,1.2,1.3,1.3],[11.5,null,11.2,15.3,9.8,11.5,13.5,15.5,12.4,14.8,10.6,12.7,12.8,15.3,14.5,12.2,11.1,13.5,14.3,14.6,12.5,12.3,15.3,12.7,14.9,14.6,11.3,14.3,13.6,11.7,9.8,13.7,14.6,12.8,11.8,13.7,12.5,12.5,10.4,13.7,13.3,11.8,13.7,10.7,12.8,12.4,12.6,11.7,14.3,12.2,10.2,13.5,13.7,11.1,12.4,14.9,13.6,15,13.7,13.3,12.6,12.6,13.3,13.9,13.4,13,12.7,15.3,15,15.7,11,15.7,16.5,16.5,12.7,12.6,12.6,11.8,11.3,13.6,9.7,11,14.5,14.6,12.2,14.5,13.9,14.9,13,12.8,13.9,13,15.3,15.4,14.3,13.9,12.4,14.6,15.3,11.9,13.8,15.9,11.2,12.6,13.9,13.7,13.1,13.4,14.8,13.5,12.6,13.6,13,13,10.7,12,12.9,11.8,12.6,14.5,14.4,12.4,8.4,14.3,12.8,14.5,13.2,13.6,14.5,12.5,12.9,9.6,9.6,12.1,15.2,10.8,15.7,14.2,12.7,9.8,11.9,16.2,13.7,10.5,8.4,12.6,14.5,14.8,11.4,13.3,11,10.8,11.7,11.3,12.9,12.1,12.5,11.1,13.2,13.5,9.5,11.7,11.4,14.5,14.8,14.8,12.4,13.6,15,12.7,13.7,13.2,14.9,13.4,10.8,12.6,13.1,7.7,12.1,12.4,14.1,12.2,11.1,14,13.2,13.3,12.7,14.7,10.1,14.5,14,16.2,11.3,14.5,12.4,11.2,13.4,13.1,13.6,12.9,14.5,13.8,15,14.9,13,14.2,14.9,15.9,11.6,13.9,12.8,15.5,12.8,13.7,12.6,7.4,12.8,15.1,15.1,14.9,12.2,13,14.1,13.1,14.2,15.4,16.6,15.9,16.1,15.1,14.5,15,15.1,11.8,13.6,13.8,12.1,14,15.2,12.2,14.2],[2,1.3,1.3,1.8,1.4,1.8,1.3,1.4,1.5,2.2,2.1,1.5,1.8,1.9,1.8,1.9,2,1.5,1.8,1.3,1.7,1.7,1.7,1.3,1.8,2.3,2.7,2.1,1.8,1.5,1.1,0.9,1.1,1.8,1.6,1.8,3.2,1.9,1.7,2,2.3,1.8,1.7,1.7,1.4,1.8,1.1,1.8,1.7,2,1.7,1.5,1.6,1.5,1.8,2.4,1.2,2,1.1,1.6,1.9,2.6,2.2,1.8,2.3,1.8,1.9,2,0.8,1.3,2.1,1.8,1.8,1.6,1.8,1.5,1.7,2.4,1.4,2.2,1.4,2.1,1.6,1.3,1.3,2,1.9,1.8,1.4,2.4,2.2,2,1.7,1.1,2.2,1.1,1.4,2.2,1.8,1.4,1.7,2.2,1.5,1.7,1.2,2.4,1.5,1.7,1.5,1.8,1.9,1.1,2.5,2,2.7,2,1.7,1.8,0.9,1.3,1.7,2,1.6,1.3,1.5,0.3,1.8,2,1.2,1.6,1.9,1.7,1.6,2,2.3,1.2,1.6,1.7,1.6,2.2,2.3,1.9,1.7,2,2.5,2.1,1.5,2.4,1.7,1.8,1.5,2,2.2,1.7,2.5,1.8,2.9,1.7,2.6,1.5,1.4,2.3,2.4,2.1,2.2,1.4,1.8,2.3,1.5,1.7,1.8,1.7,1.7,1.7,1.8,1.6,1.7,2.2,1.7,1.7,1.6,1.4,1.2,1.1,1.8,2.2,1.6,2,1.2,1.5,1.6,1.5,1.6,1.4,1,2.6,1.1,1.7,1.3,1.3,2.1,2,1.9,1.4,1.4,1.5,1.2,2.4,2.4,2,1.9,2.6,1.4,2.6,1.5,1.4,1.4,1.4,2.4,2.2,1.9,2.2,1.5,1.2,1.9,1.3,1.6,1.7,1.8,1.9,2.5,1.6,1.7,2.2,1.4,2.4,2.1,2.6,1.2,2.2,1.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>age<\/th>\n      <th>sex<\/th>\n      <th>dxyr<\/th>\n      <th>pcdx<\/th>\n      <th>pctime<\/th>\n      <th>futime<\/th>\n      <th>death<\/th>\n      <th>alb<\/th>\n      <th>creat<\/th>\n      <th>hgb<\/th>\n      <th>mspike<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,4,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>첫번째 cox 모형을 만들어 보겠습니다. event에 해당하는 변수로 <code>death</code>를 사용하고 이때 까지 추적관찰된 기간은 <code>futime</code>을 이용하겠습니다. 보정 변수는 <code>sex</code> 그리고 index가 될, X 축이 될 변수는 <code>age</code>로하고, 자유도는 4로하겠습니다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="survival-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mfit <span class="ot">=</span> mgus <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="survival-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coxph</span>(<span class="at">data=</span>., </span>
+<span id="cb3-3"><a href="survival-data.html#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Surv</span>(futime, death) <span class="sc">~</span> </span>
+<span id="cb3-4"><a href="survival-data.html#cb3-4" aria-hidden="true" tabindex="-1"></a>          sex <span class="sc">+</span> <span class="fu">pspline</span>(age, <span class="at">df =</span> <span class="dv">4</span>)</span>
+<span id="cb3-5"><a href="survival-data.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-6"><a href="survival-data.html#cb3-6" aria-hidden="true" tabindex="-1"></a>mfit</span></code></pre></div>
+<pre><code>## Call:
+## coxph(formula = Surv(futime, death) ~ sex + pspline(age, df = 4), 
+##     data = .)
+## 
+##                               coef se(coef)      se2    Chisq   DF      p
+## sexmale                    0.22784  0.13883  0.13820  2.69335 1.00   0.10
+## pspline(age, df = 4), lin  0.06682  0.00703  0.00703 90.22974 1.00 &lt;2e-16
+## pspline(age, df = 4), non                             3.44005 3.05   0.34
+## 
+## Iterations: 5 outer, 16 Newton-Raphson
+##      Theta= 0.851 
+## Degrees of freedom for terms= 1.0 4.1 
+## Likelihood ratio test=108  on 5.04 df, p=&lt;2e-16
+## n= 241, number of events= 225</code></pre>
+<p>이를 기본적인 그래프로 그리면 다음과 같습니다. <br>
+우리가 두개의 변수를 이용했는데, 첫번째가 <code>sex</code> (terms =1) 이고 두번째가 <code>age</code>(terms =2) 입니다. <code>age</code>가 주된 관심이니 <code>terms=2</code>을 사용하겠습니다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="survival-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">termplot</span>(mfit, <span class="at">terms =</span> <span class="dv">2</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">col.term =</span><span class="dv">1</span>, <span class="at">col.set =</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="methods_files/figure-html/sd%20basic%20plot%201-1.png" width="672" /></p>
+<p>몇가지를 수정하기 위해 <code>termplot</code>의 데이터를 가져오겠습니다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="survival-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ptemp <span class="ot">&lt;-</span> <span class="fu">termplot</span>(mfit, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-2"><a href="survival-data.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(ptemp)</span></code></pre></div>
+<pre><code>## $constant
+## [1] 3.205273
+## 
+## $names
+## [1] &quot;sex&quot; &quot;age&quot;</code></pre>
+<p>우리가 필요로 하는 것은 <code>age</code>에 따른 Hazard Ratio 와 Standard Error 입니다. 이제 <code>pterm$age</code>를 이용해 데이터를 가져오겠습니다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="survival-data.html#cb8-1" aria-hidden="true" tabindex="-1"></a>ageterm <span class="ot">&lt;-</span> ptemp<span class="sc">$</span>age</span>
+<span id="cb8-2"><a href="survival-data.html#cb8-2" aria-hidden="true" tabindex="-1"></a>ref_score <span class="ot">=</span> ageterm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(x <span class="sc">==</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(y)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tsregression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mixed.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["methods.pdf", "methods.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
