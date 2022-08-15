@@ -1,1 +1,14 @@
-/home/dspub/project/research_methods/methods_book/_book/style.css
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
